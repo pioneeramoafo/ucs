@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uccbuy - [Store Name]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/uccbuy_style.css">
+
+    <style>
+        /* Specific styles for the Premium Store content */
+        .premium-store-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .premium-store-container h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: whitesmoke;
+            text-align: center;
+            transition: color 0.5s ease;
+        }
+
+        /* --- Personal Store Banner Styles --- */
+        .store-banner {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-image: url('https://placehold.co/1200x300/purple/white?text=Store+Banner');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .store-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .store-profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgb(36, 34, 55);
+            object-fit: cover;
+            z-index: 1;
+            margin-right: 20px;
+            transition: border-color 0.5s ease;
+        }
+
+        body.light-mode .store-profile-picture {
+            border-color: #fff;
+        }
+
+        .store-info {
+            z-index: 1;
+            color: whitesmoke;
+            flex-grow: 1;
+             transition: color 0.5s ease;
+        }
+
+        .store-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em;
+            color: deepskyblue;
+             transition: color 0.5s ease;
+        }
+
+        .store-info p {
+            margin: 0;
+            font-size: 1em;
+            color: darkgray;
+            max-width: 90%;
+             transition: color 0.5s ease;
+        }
+
+         body.light-mode .store-info h3 {
+            color: deepskyblue;
+         }
+
+         body.light-mode .store-info p {
+            color: #555;
+         }
+
+        /* --- Tab Styles --- */
+        .store-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #444; /* Separator line below tabs */
+            transition: border-bottom-color 0.5s ease;
+        }
+
+        .store-tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: darkgray; /* Inactive tab text color */
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            border-bottom: 2px solid transparent; /* Transparent border for inactive */
+        }
+
+        .store-tab:hover {
+            color: whitesmoke; /* Hover color */
+        }
+
+        .store-tab.active {
+            color: deepskyblue; /* Active tab text color */
+            border-bottom-color: deepskyblue; /* Accent color for active tab */
+        }
+
+        .tab-content {
+            display: none; /* Hide all tab content by default */
+            padding: 15px 0; /* Padding for content area */
+        }
+
+        .tab-content.active {
+            display: block; /* Show active tab content */
+        }
+
+        /* --- Product Grid Styles (Moved/Adapted) --- */
+        .store-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0;
+            border-radius: 8px;
+        }
+
+        /* Style for the link wrapping the product card */
+        .store-product-card-link {
+             text-decoration: none; /* Remove underline from the link */
+             color: inherit; /* Inherit text color */
+        }
+
+        .store-product-card {
+            background-color: rgb(46, 44, 65);
+            border: 1px solid #555;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, background-color 0.5s ease, border-color 0.5s ease;
+            cursor: pointer;
+            height: 300px; /* Fixed height for consistency */
+        }
+
+        .store-product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .store-image-placeholder {
+            width: 100%;
+            height: 180px; /* Fixed height for image area */
+            background-color: rgb(56, 54, 75); /* Placeholder background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: darkgray;
+            font-size: 1em;
+            border-bottom: 1px solid #555;
+            overflow: hidden;
+             transition: background-color 0.5s ease, border-bottom-color 0.5s ease, color 0.5s ease;
+        }
+
+         .store-image-placeholder img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area without distortion */
+         }
+
+        .store-card-content {
+            padding: 10px; /* Padding inside the card content */
+            flex-grow: 1; /* Allow content area to grow */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space out title, description (if added), and price */
+        }
+
+        .store-card-content h3 {
+            margin-top: 0;
+            margin-bottom: 5px; /* Space below title */
+            font-size: 1.1em;
+            color: deepskyblue;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+             transition: color 0.5s ease;
+        }
+
+         .store-card-content p {
+            margin: 0;
+            font-size: 1em;
+            color: whitesmoke;
+            font-weight: 600;
+             transition: color 0.5s ease;
+         }
+
+        /* --- Detail Tab Content Styles --- */
+        .detail-tab-content-layout {
+            display: flex; /* Use flexbox for side-by-side layout */
+            gap: 30px; /* Space between image and text */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            background-color: rgb(46, 44, 65); /* Darker background for this section */
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 20px;
+             transition: background-color 0.5s ease, border-color 0.5s ease;
+             align-items: flex-start; /* Align items to the top */
+             margin-bottom: 30px; /* Space below the main detail section */
+        }
+
+        .detail-image-area {
+            flex-shrink: 0; /* Prevent image area from shrinking */
+            width: 300px; /* Fixed width for the image area on larger screens */
+            height: 350px; /* Fixed height */
+            background-color: rgb(56, 54, 75); /* Placeholder background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: darkgray;
+            font-size: 1.2em;
+            border-radius: 8px;
+            overflow: hidden; /* Hide overflowing parts of the image */
+             transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .detail-image-area img {
+            display: block;
+            width: 100%; /* Make the image fill the width of its container */
+            height: 100%; /* Make the image fill the height of its container */
+            object-fit: cover; /* This is key: crops the image to fit the container while maintaining aspect ratio */
+        }
+
+
+        .detail-text-area {
+            flex-grow: 1; /* Allow text area to take up remaining space */
+            color: darkgray; /* Default text color */
+            line-height: 1.6;
+             transition: color 0.5s ease;
+             display: flex; /* Use flexbox for internal layout */
+             flex-direction: column; /* Stack elements vertically */
+        }
+
+        .detail-text-area h3 {
+            color: whitesmoke; /* Product name color */
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+             transition: color 0.5s ease;
+        }
+
+        .detail-text-area p {
+            margin-bottom: 10px; /* Space between paragraphs */
+        }
+
+        .detail-text-area strong {
+            color: deepskyblue; /* Highlight labels */
+             transition: color 0.5s ease;
+        }
+
+        /* Style for the Contact Seller button */
+        .contact-seller-btn {
+            margin-top: 20px; /* Space above the button */
+            padding: 12px 20px;
+            background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+            color: white; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            align-self: flex-start; /* Align button to the start (left) */
+        }
+
+        .contact-seller-btn:hover {
+            opacity: 0.9; /* Slight transparency on hover */
+        }
+
+
+        /* --- Other Products Grid Styles (New) --- */
+        .other-products-section h3 {
+            color: whitesmoke; /* Heading color */
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+             transition: color 0.5s ease;
+        }
+
+        .other-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Slightly smaller cards for 'other products' */
+            gap: 15px; /* Smaller gap */
+            padding: 0;
+            border-radius: 8px;
+        }
+
+        /* Reuse store-product-card and its children styles for consistency */
+        /* .other-products-grid .store-product-card { ... } */
+        /* .other-products-grid .store-image-placeholder { ... } */
+        /* .other-products-grid .store-card-content { ... } */
+        /* .other-products-grid .store-card-content h3 { ... } */
+        /* .other-products-grid .store-card-content p { ... } */
+
+
+        /* --- Review Tab Content Styles --- */
+        .review-content {
+            color: darkgray;
+            line-height: 1.6;
+             transition: color 0.5s ease;
+        }
+
+        .review-content h3 {
+            color: whitesmoke;
+            margin-top: 0;
+            margin-bottom: 10px;
+             transition: color 0.5s ease;
+        }
+
+
+        /* Light mode styles */
+        body.light-mode .premium-store-container {
+            /* background-color: #fff; */
+            border-color: #ddd;
+        }
+
+        body.light-mode .premium-store-container h2 {
+            color: #333;
+        }
+
+        body.light-mode .store-banner {
+            /* background-image: url('...'); */
+        }
+
+        body.light-mode .store-profile-picture {
+            border-color: #fff;
+        }
+
+        body.light-mode .store-info h3 {
+            color: deepskyblue;
+        }
+
+        body.light-mode .store-info p {
+            color: #555;
+        }
+
+        body.light-mode .store-tabs {
+            border-bottom-color: #ddd;
+        }
+
+        body.light-mode .store-tab {
+            color: #555;
+        }
+
+        body.light-mode .store-tab:hover {
+            color: #333;
+        }
+
+        body.light-mode .store-tab.active {
+            color: deepskyblue;
+            border-bottom-color: deepskyblue;
+        }
+
+        body.light-mode .store-product-card {
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        body.light-mode .store-image-placeholder {
+            background-color: #ccc;
+            color: #555;
+            border-bottom-color: #ccc;
+        }
+
+        body.light-mode .store-card-content h3 {
+            color: deepskyblue;
+        }
+
+        body.light-mode .store-card-content p {
+            color: #333;
+        }
+
+        body.light-mode .detail-tab-content-layout {
+             background-color: #eee;
+             border-color: #ddd;
+        }
+
+        body.light-mode .detail-image-area {
+             background-color: #ccc;
+             color: #555;
+        }
+
+        body.light-mode .detail-text-area {
+            color: #555;
+        }
+
+        body.light-mode .detail-text-area h3 {
+            color: #333;
+        }
+
+        body.light-mode .detail-text-area strong {
+            color: deepskyblue;
+        }
+
+        body.light-mode .contact-seller-btn {
+             background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue);
+             color: white;
+        }
+
+
+        body.light-mode .other-products-section h3 {
+            color: #333;
+        }
+
+
+        body.light-mode .review-content {
+            color: #555;
+        }
+
+        body.light-mode .review-content h3 {
+            color: #333;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .premium-store-container {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            .store-banner {
+                height: 200px;
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            .store-profile-picture {
+                width: 80px;
+                height: 80px;
+                border-width: 3px;
+                 margin-right: 15px;
+            }
+            .store-info h3 {
+                font-size: 1.5em;
+             }
+             .store-info p {
+                font-size: 0.9em;
+             }
+             .store-tabs {
+                margin-bottom: 15px;
+             }
+             .store-tab {
+                padding: 8px 12px;
+                font-size: 0.95em;
+             }
+             .tab-content {
+                padding: 10px 0;
+             }
+             /* Detail tab layout adjustment */
+             .detail-tab-content-layout {
+                flex-direction: column; /* Stack image and text vertically */
+                gap: 20px;
+                padding: 15px;
+                margin-bottom: 20px; /* Adjust space below */
+             }
+             .detail-image-area {
+                width: 100%; /* Image takes full width */
+                height: 250px; /* Adjust height */
+             }
+             .detail-text-area {
+                font-size: 0.95em;
+             }
+             .detail-text-area h3 {
+                font-size: 1.6em;
+             }
+             .store-products-grid {
+                gap: 15px;
+                padding: 0;
+             }
+             .store-product-card {
+                height: 280px;
+             }
+             .store-image-placeholder {
+                height: 160px;
+             }
+             .store-card-content {
+                padding: 8px;
+             }
+             .store-card-content h3 {
+                font-size: 1em;
+             }
+             .store-card-content p {
+                font-size: 0.9em;
+             }
+             /* Other products grid adjustment */
+             .other-products-section h3 {
+                font-size: 1.4em;
+                margin-bottom: 15px;
+             }
+             .other-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Adjust min width */
+                gap: 10px; /* Adjust gap */
+             }
+        }
+
+        @media (max-width: 480px) {
+            .premium-store-container {
+                padding: 10px;
+                margin: 10px auto;
+            }
+             .store-banner {
+                height: 150px;
+                padding: 10px;
+                margin-bottom: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .store-profile-picture {
+                width: 60px;
+                height: 60px;
+                border-width: 2px;
+                 margin-right: 0;
+                 margin-bottom: 8px;
+            }
+             .store-info {
+                flex-direction: column;
+                 width: 100%;
+             }
+             .store-info h3 {
+                font-size: 1.3em;
+                margin-bottom: 4px;
+             }
+             .store-info p {
+                font-size: 0.8em;
+                max-width: 100%;
+             }
+             .store-tabs {
+                margin-bottom: 10px;
+             }
+             .store-tab {
+                padding: 6px 10px;
+                font-size: 0.9em;
+             }
+             .tab-content {
+                padding: 8px 0;
+             }
+             /* Detail tab layout adjustment */
+             .detail-tab-content-layout {
+                flex-direction: column; /* Stack image and text vertically */
+                gap: 15px;
+                padding: 10px;
+                margin-bottom: 15px; /* Adjust space below */
+             }
+              .detail-image-area {
+                width: 100%; /* Image takes full width */
+                height: 200px; /* Adjust height */
+             }
+             .detail-text-area {
+                font-size: 0.9em;
+             }
+             .detail-text-area h3 {
+                font-size: 1.4em;
+             }
+            .store-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+                padding: 0;
+            }
+            .store-product-card {
+                height: 250px;
+            }
+             .store-image-placeholder {
+                height: 150px;
+             }
+             .store-card-content {
+                padding: 8px;
+             }
+             .store-card-content h3 {
+                font-size: 1em;
+                margin-bottom: 4px;
+             }
+             .store-card-content p {
+                font-size: 0.9em;
+             }
+             /* Other products grid adjustment */
+             .other-products-section h3 {
+                font-size: 1.3em;
+                margin-bottom: 10px;
+             }
+             .other-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Adjust min width */
+                gap: 8px; /* Adjust gap */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heading-class">
+            <div class="logo">UccBuy</div>
+            <div class="header-icons">
+                <i class="fas fa-search search-icon"></i>
+                <i class="fas fa-user account-icon"></i>
+                <button class="sell">Sell</button>
+                 <i class="fas fa-shopping-bag sell-icon"></i>
+            </div>
+        </div>
+
+        <div class="account-dropdown">
+            <ul>
+                <li><a href="user.html?tab=login">Sign In</a></li>
+                <li><a href="user.html?tab=signup">Signup</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-links">
+                <a href="#" data-category="all">All</a>
+                <a href="#" data-category="food-drink">Food&Drink</a>
+                <a href="dashboard.html" data-category="education">Education</a>
+                <a href="#" data-category="fashion-clothing">Fashion&Clothing</a>
+                <a href="#" data-category="electronics">Electronics</a>
+                <a href="#" data-category="services">Services</a>
+            </div>
+        </div>
+    </header>
+
+    <button class="theme-toggle">
+        <i class="fas fa-sun"></i> <i class="fas fa-moon" style="display: none;"></i> <span>Toggle Theme</span>
+    </button>
+
+
+    <div class="search-bar-container">
+        <div class="search-bar-content">
+            <input type="text" class="search-input" placeholder="Search...">
+            <button class="search-button">Search</button> <i class="fas fa-times close-search"></i>
+        </div>
+    </div>
+
+    <main>
+        <div class="premium-store-container">
+            <div class="store-banner">
+                <img src="https://placehold.co/1200x300/purple/white?text=Store+Banner" alt="Store Banner" style="display: none;"> <img src="https://placehold.co/100x100/deepskyblue/white?text=Profile" alt="Store Owner Profile Picture" class="store-profile-picture">
+                <div class="store-info">
+                    <h3>[Store Owner Name]</h3>
+                    <p>This is a short bio about the store owner or the type of products they sell.</p>
+                </div>
+                </div>
+
+            <div class="store-tabs">
+                <div class="store-tab active" data-tab="products">Products</div>
+                <div class="store-tab" data-tab="detail">Detail</div>
+                <div class="store-tab" data-tab="review">Review</div>
+            </div>
+
+            <div id="products-content" class="tab-content active">
+                <div class="store-products-grid">
+                    <a href="#" class="store-product-card-link"
+                       data-product-id="product1"
+                       data-product-name="Stylish Backpack"
+                       data-product-category="Fashion & Clothing"
+                       data-product-price="85.00"
+                       data-product-negotiable="Yes"
+                       data-product-description="A durable and stylish backpack perfect for students. Features multiple compartments and comfortable straps."
+                       data-product-image="https://placehold.co/400x250/deepskyblue/white?text=Backpack+Image">
+                        <div class="store-product-card">
+                            <div class="store-image-placeholder">
+                                 <img src="https://placehold.co/400x250/deepskyblue/white?text=Product+Image+1" alt="Product Image 1">
+                            </div>
+                            <div class="store-card-content">
+                                <h3>Product Title 1</h3>
+                                <p>GHS XX.XX</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="store-product-card-link"
+                       data-product-id="product2"
+                       data-product-name="Wireless Earbuds"
+                       data-product-category="Electronics"
+                       data-product-price="150.00"
+                       data-product-negotiable="No"
+                       data-product-description="High-quality wireless earbuds with noise cancellation and long battery life. Perfect for music and calls."
+                       data-product-image="https://placehold.co/400x250/deepskyblue/white?text=Earbuds+Image">
+                        <div class="store-product-card">
+                            <div class="store-image-placeholder">
+                                 <img src="https://placehold.co/400x250/deepskyblue/white?text=Product+Image+2" alt="Product Image 2">
+                            </div>
+                            <div class="store-card-content">
+                                <h3>Product Title 2</h3>
+                                <p>GHS YY.YY</p>
+                            </div>
+                        </div>
+                    </a>
+
+                     <a href="#" class="store-product-card-link"
+                       data-product-id="product3"
+                       data-product-name="Textbook: Introduction to Biology"
+                       data-product-category="Education"
+                       data-product-price="60.00"
+                       data-product-negotiable="Yes"
+                       data-product-description="Used textbook in good condition for Introduction to Biology course. No highlights or notes."
+                       data-product-image="https://placehold.co/400x250/deepskyblue/white?text=Textbook+Image">
+                        <div class="store-product-card">
+                            <div class="store-image-placeholder">
+                                 <img src="https://placehold.co/400x250/deepskyblue/white?text=Product+Image+3" alt="Product Image 3">
+                            </div>
+                            <div class="store-card-content">
+                                <h3>Product Title 3</h3>
+                                <p>GHS ZZ.ZZ</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    </div>
+                 <p style="color: darkgray; font-size: 0.9em; text-align: center; margin-top: 20px;">*(Note: Products shown are for demonstration. Connect to your backend to display the user's actual store items and populate data attributes.)*</p>
+            </div>
+
+            <div id="detail-content" class="tab-content">
+                <div class="detail-tab-content-layout">
+                    <div class="detail-image-area">
+                        <img src="https://placehold.co/300x350/deepskyblue/white?text=Select+a+Product" alt="Featured Product Image Placeholder">
+                    </div>
+                    <div class="detail-text-area">
+                        <h3>Select a product to view details</h3>
+                        <p>Click on any product card in the "Products" tab to see its detailed information here.</p>
+                        <button class="contact-seller-btn">Contact Seller</button>
+                    </div>
+                </div>
+
+                <div class="other-products-section">
+                    <h3>More from this Seller</h3>
+                    <div class="other-products-grid">
+                        <a href="#" class="store-product-card-link other-product-card-link"
+                           data-product-id="other_product1"
+                           data-product-name="Another Great Item"
+                           data-product-category="Electronics"
+                           data-product-price="99.99"
+                           data-product-negotiable="Yes"
+                           data-product-description="Check out this other fantastic item available from this seller!"
+                           data-product-image="https://placehold.co/400x250/deepskyblue/white?text=Other+Product+1">
+                            <div class="store-product-card">
+                                <div class="store-image-placeholder">
+                                     <img src="https://placehold.co/400x250/deepskyblue/white?text=Other+Product+1" alt="Other Product 1 Image">
+                                </div>
+                                <div class="store-card-content">
+                                    <h3>Another Great Item</h3>
+                                    <p>GHS 99.99</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="store-product-card-link other-product-card-link"
+                           data-product-id="other_product2"
+                           data-product-name="Vintage Book"
+                           data-product-category="Education"
+                           data-product-price="45.00"
+                           data-product-negotiable="No"
+                           data-product-description="A rare vintage book for collectors or students."
+                           data-product-image="https://placehold.co/400x250/deepskyblue/white?text=Other+Product+2">
+                            <div class="store-product-card">
+                                <div class="store-image-placeholder">
+                                     <img src="https://placehold.co/400x250/deepskyblue/white?text=Other+Product+2" alt="Other Product 2 Image">
+                                </div>
+                                <div class="store-card-content">
+                                    <h3>Vintage Book</h3>
+                                    <p>GHS 45.00</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        </div>
+                </div>
+
+            </div>
+
+            <div id="review-content" class="tab-content">
+                <div class="review-content">
+                    <h3>Customer Reviews</h3>
+                    <p>This section would display reviews and ratings from customers who have purchased from this store.</p>
+                    <p>Example Review:</p>
+                    <p>"Great products and fast shipping! Highly recommend." - [Customer Name]</p>
+                    <p>*(Note: This is placeholder content. Implement review functionality to display real reviews.)*</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>UccBuy</h4>
+                <p>Your marketplace for buying and selling within the UCC community. Find anything from textbooks to fashion, electronics, and services.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                 <ul>
+                    <li><a href="#" data-category="food-drink">Food&Drink</a></li>
+                    <li><a href="#" data-category="education">Education</a></li>
+                    <li><a href="#" data-category="fashion-clothing">Fashion&Clothing</a></li>
+                    <li><a href="#" data-category="electronics">Electronics</a></li>
+                    <li><a href="#" data-category="services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 UccBuy. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/uccbuy_script.js"></script>
+    <script>
+        // Add script for tab switching and product detail display
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.store-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const productCardLinks = document.querySelectorAll('#products-content .store-product-card-link');
+            const otherProductCardLinks = document.querySelectorAll('#detail-content .other-product-card-link'); // Select new links
+            const detailImageArea = document.querySelector('#detail-content .detail-image-area');
+            const detailTextArea = document.querySelector('#detail-content .detail-text-area');
+            const detailTab = document.querySelector('.store-tab[data-tab="detail"]');
+            const detailTabContent = document.getElementById('detail-content'); // Get the detail tab content container
+
+
+            // Function to switch tabs
+            function switchTab(targetTab) {
+                 // Remove 'active' class from all tabs and content
+                 tabs.forEach(t => t.classList.remove('active'));
+                 tabContents.forEach(tc => tc.classList.remove('active'));
+
+                 // Add 'active' class to the target tab and its content
+                 const targetTabElement = document.querySelector(`.store-tab[data-tab="${targetTab}"]`);
+                 const targetTabContentElement = document.getElementById(targetTab + '-content');
+
+                 if (targetTabElement && targetTabContentElement) {
+                     targetTabElement.classList.add('active');
+                     targetTabContentElement.classList.add('active');
+                 }
+            }
+
+             // Function to format description text with line breaks
+            function formatDescription(text, maxCharsPerLine) {
+                if (!text) return ''; // Handle empty or null text
+                const words = text.split(' ');
+                let currentLine = '';
+                let formattedText = '';
+
+                words.forEach((word, index) => {
+                    // Check if adding the next word exceeds the limit
+                    // Add 1 for the space if it's not the first word on the line
+                    if (currentLine.length + word.length + (currentLine.length > 0 ? 1 : 0) > maxCharsPerLine) {
+                        // If the current line is not empty, add a line break
+                        if (currentLine.length > 0) {
+                            formattedText += currentLine.trim() + '<br>';
+                        }
+                        // Start a new line with the current word
+                        currentLine = word + ' ';
+                    } else {
+                        // Add the word to the current line
+                        currentLine += word + ' ';
+                    }
+
+                    // Add the last line if it's not empty after the loop
+                    if (index === words.length - 1 && currentLine.length > 0) {
+                         formattedText += currentLine.trim();
+                    }
+                });
+
+                return formattedText;
+            }
+
+            // Function to populate the detail tab with product data
+            function populateDetailTab(product) {
+                 if (detailImageArea && detailTextArea) {
+                     detailImageArea.innerHTML = `<img src="${product.image}" alt="${product.name} Image">`;
+                     const formattedDescription = formatDescription(product.description, 98);
+                     // Clear previous content and add new details and the button
+                     detailTextArea.innerHTML = `
+                        <h3>${product.name}</h3>
+                        <p><strong>Category:</strong> ${product.category}</p>
+                        <p><strong>Price:</strong> GHS ${product.price}</p>
+                        <p><strong>Negotiable:</strong> ${product.negotiable}</p>
+                        <p><strong>Description:</strong></p>
+                        <p>${formattedDescription}</p>
+                        <p>*(Note: This is dynamic content loaded from the product data.)*</p>
+                        <button class="contact-seller-btn">Contact Seller</button> `;
+
+                     // Add event listener to the newly created button
+                     const contactButton = detailTextArea.querySelector('.contact-seller-btn');
+                     if (contactButton) {
+                         contactButton.addEventListener('click', () => {
+                             // Replace with your actual contact seller logic (e.g., open a modal, link to a contact form)
+                             alert(`Contacting seller for product: ${product.name}`);
+                             // Example: window.location.href = `contact.html?product_id=${product.id}`;
+                         });
+                     }
+                 }
+            }
+
+
+            // Add event listeners for tab clicks
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTab = tab.getAttribute('data-tab');
+                    switchTab(targetTab);
+                });
+            });
+
+            // Add event listeners for product card clicks in the Products tab
+            productCardLinks.forEach(cardLink => {
+                cardLink.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    // Get product details from data attributes
+                    const product = {
+                        id: cardLink.getAttribute('data-product-id'),
+                        name: cardLink.getAttribute('data-product-name'),
+                        category: cardLink.getAttribute('data-product-category'),
+                        price: cardLink.getAttribute('data-product-price'),
+                        negotiable: cardLink.getAttribute('data-product-negotiable'),
+                        description: cardLink.getAttribute('data-product-description'),
+                        image: cardLink.getAttribute('data-product-image')
+                    };
+
+                    // Populate the Detail tab content
+                    populateDetailTab(product);
+
+                    // Switch to the Detail tab
+                    switchTab('detail');
+
+                    console.log(`Product clicked (from Products tab): ${product.name} (ID: ${product.id})`);
+                });
+            });
+
+            // Add event listeners for product card clicks in the Other Products section
+            otherProductCardLinks.forEach(cardLink => {
+                cardLink.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                     // Get product details from data attributes
+                    const product = {
+                        id: cardLink.getAttribute('data-product-id'),
+                        name: cardLink.getAttribute('data-product-name'),
+                        category: cardLink.getAttribute('data-product-category'),
+                        price: cardLink.getAttribute('data-product-price'),
+                        negotiable: cardLink.getAttribute('data-product-negotiable'),
+                        description: cardLink.getAttribute('data-product-description'),
+                        image: cardLink.getAttribute('data-product-image')
+                    };
+
+                    // Populate the Detail tab content
+                    populateDetailTab(product);
+
+                    // Scroll to the top of the detail tab content area
+                    if (detailTabContent) {
+                         detailTabContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+
+
+                    console.log(`Product clicked (from Other Products): ${product.name} (ID: ${product.id})`);
+                });
+            });
+
+
+            // Set the first tab ('products') as active by default on load
+            const initialTab = document.querySelector('.store-tab.active');
+            if (!initialTab) { // If no active tab is set initially in HTML
+                 const firstTab = document.querySelector('.store-tab');
+                 if (firstTab) {
+                     firstTab.classList.add('active');
+                     const firstTabContentId = firstTab.getAttribute('data-tab') + '-content';
+                     const firstTabContent = document.getElementById(firstTabContentId);
+                     if (firstTabContent) {
+                         firstTabContent.classList.add('active');
+                     }
+                 }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uccbuy - Product Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/uccbuy_style.css">
+    <style>
+        /* Styles unique to the product detail page layout - KEEP THESE HERE */
+        /* These styles define the structure and specific appearance of the product detail sections */
+        /* General styles are in uccbuy_style.css */
+
+        /* Style for images within the main-image and further-image containers */
+        /* This is crucial for making the image fit perfectly */
+        .main-image img,
+        .further-image img {
+            display: block; /* Remove extra space below the image */
+            width: 100%; /* Make the image fill the width of its container */
+            height: 100%; /* Make the image fill the height of its container */
+            object-fit: cover; /* This is the key: crops the image to fit the container while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heading-class">
+            <div class="logo">UccBuy</div>
+            <div class="header-icons">
+                <i class="fas fa-search search-icon"></i>
+                <i class="fas fa-user account-icon"></i>
+                <button class="sell">Sell</button>
+                 <i class="fas fa-shopping-bag sell-icon"></i>
+            </div>
+        </div>
+
+        <div class="account-dropdown">
+            <ul>
+                <li><a href="user.html?tab=login">Sign In</a></li>
+                <li><a href="user.html?tab=signup">Signup</a></li>
+            </ul>
+        </div>
+    </header>
+
+   
+
+
+    <div class="search-bar-container">
+        <div class="search-bar-content">
+            <input type="text" class="search-input" placeholder="Search...">
+            <button class="search-button">Search</button> <i class="fas fa-times close-search"></i>
+        </div>
+    </div>
+
+    <main>
+        <div class="detail-container">
+            <div class="actual-detail">
+                <div class="product-image">
+                    <div class="main-image">
+                        <img src="71qRAW4o6OS._SL1000_.jpg" alt="Main Product Image" id="mainProductImage">
+                    </div>
+                    <div class="further-image">
+                         <img src="1.jpg" alt="Product Thumbnail 1" class="thumbnail-image">
+                         <img src="https://placehold.co/100x100/000/FFF?text=Thumb+2" alt="Product Thumbnail 2" class="thumbnail-image">
+                         <img src="https://placehold.co/100x100/000/FFF?text=Thumb+3" alt="Product Thumbnail 3" class="thumbnail-image">
+                         <img src="https://placehold.co/100x100/000/FFF?text=Thumb+4" alt="Product Thumbnail 4" class="thumbnail-image">
+                         <img src="https://placehold.co/100x100/000/FFF?text=Thumb+5" alt="Product Thumbnail 5" class="thumbnail-image">
+                         </div>
+                </div>
+                <div class="product-text">
+                    <h1>Product Name</h1>
+                    <p>Product description</p>
+                    <p>This is a high-quality product designed to meet your needs.
+                        It combines durability, functionality, and style, making it a perfect choice for ever
+                        yday use. Experience exceptional performance and unmatched reliability with this product.</p>
+                    <p>Price: Ghs 120</p>
+                    <button class="contact-Seller">contact Seller</button>
+                </div>
+            </div>
+        </div>
+        <div class="advert-container">
+            <div class="advert-slide active">Advertisement Slide 1</div>
+            <div class="advert-slide">Advertisement Slide 2</div>
+            <div class="advert-slide">Advertisement Slide 3</div>
+            </div>
+        <h2>Similar products</h2>
+        <div class="popular-ads-container">
+            <a href="product_detail.html" class="ad-card-link">
+                <div class="ad-card">
+                    <div class="premium-badge"><i class="fas fa-check"></i> Verified</div>
+                    <div class="image-placeholder">Image Placeholder</div>
+                    <div class="card-content">
+                        <h3>Product Title 1</h3> <div class="price-button-container">
+                            <p>Price: GHS XX.XX</p>
+                            <button class="store-button">Visit Store</button> </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="product_detail.html" class="ad-card-link">
+                <div class="ad-card">
+                     <div class="premium-badge"><i class="fas fa-check"></i> Verified</div>
+                    <div class="image-placeholder">Image Placeholder</div>
+                    <div class="card-content">
+                        <h3>Product Title 2</h3> <div class="price-button-container">
+                            <p>Price: GHS YY.YY</p>
+                            <button class="store-button">Visit Store</button> </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="product_detail.html" class="ad-card-link">
+                <div class="ad-card">
+                    <div class="image-placeholder">Image Placeholder</div>
+                    <div class="card-content">
+                         <h3>Product Title 3</h3> <p>Price: GHS ZZ.ZZ</p>
+                        </div>
+                </div>
+            </a>
+
+             <a href="product_detail.html" class="ad-card-link">
+                <div class="ad-card">
+                    <div class="image-placeholder">Image Placeholder</div>
+                    <div class="card-content">
+                         <h3>Product Title 4</h3> <p>Price: GHS AA.AA</p>
+                        </div>
+                </div>
+            </a>
+
+             <a href="product_detail.html" class="ad-card-link">
+                <div class="ad-card">
+                    <div class="image-placeholder">Image Placeholder</div>
+                    <div class="card-content">
+                         <h3>Product Title 5</h3> <p>Price: GHS BB.BB</p>
+                        </div>
+                </div>
+            </a>
+
+             <a href="product_detail.html" class="ad-card-link">
+                <div class="ad-card">
+                    <div class="image-placeholder">Image Placeholder</div>
+                    <div class="card-content">
+                         <h3>Product Title 6</h3> <p>Price: GHS CC.CC</p>
+                        </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>UccBuy</h4>
+                <p>Your marketplace for buying and selling within the UCC community. Find anything from textbooks to fashion, electronics, and services.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                 <ul>
+                    <li><a href="#" data-category="food-drink">Food&Drink</a></li>
+                    <li><a href="#" data-category="education">Education</a></li>
+                    <li><a href="#" data-category="fashion-clothing">Fashion&Clothing</a></li>
+                    <li><a href="#" data-category="electronics">Electronics</a></li>
+                    <li><a href="#" data-category="services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 UccBuy. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/uccbuy_script.js"></script>
+</body>
+</html>

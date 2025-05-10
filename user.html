@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uccbuy - Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/uccbuy_style.css">
+    <style>
+        /* Styles unique to the user form layout - KEEP THESE HERE */
+        /* These styles are specific to the layout of THIS page and are NOT theme-dependent */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px); /* Adjust height considering header */
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgb(36, 34, 55); /* Slightly lighter dark background */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Darker shadow for contrast */
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: rgb(46, 44, 65); /* Darker background for inactive tab */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: darkgray; /* Inactive tab text color */
+        }
+
+        .tab.active {
+            background: rgb(36, 34, 55); /* Matches form container background */
+            color: whitesmoke; /* Active tab text color */
+            border-bottom: 3px solid deepskyblue; /* Matching site accent color */
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: whitesmoke; /* Label text color */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #444; /* Matching site border color */
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgb(46, 44, 65); /* Input background color */
+            color: whitesmoke; /* Input text color */
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: deepskyblue; /* Matching site accent color */
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: #aaa; /* Lighter placeholder text */
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+            color: white; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease; /* Use opacity for hover effect */
+        }
+
+        .btn:hover {
+            opacity: 0.9; /* Slight transparency on hover */
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: deepskyblue; /* Matching site accent color */
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            color: darkgray; /* Divider text color */
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%; /* Adjusted width */
+            height: 1px;
+            background: #444; /* Matching site border color */
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Social icon color */
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Specific social button colors (keeping standard colors) */
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        .google {
+            background-color: #db4437;
+        }
+
+        .twitter {
+            background-color: #1da1f2;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: darkgray; /* Terms text color */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .terms a {
+            color: deepskyblue; /* Matching site accent color */
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 15px; /* Adjust padding on smaller screens */
+            }
+            .tab {
+                padding: 10px; /* Adjust tab padding */
+                font-size: 0.9em; /* Adjust tab font size */
+            }
+            .tab-content {
+                padding: 20px; /* Adjust content padding */
+            }
+            .form-group input {
+                padding: 10px 12px; /* Adjust input padding */
+            }
+             .btn {
+                 padding: 10px; /* Adjust button padding */
+                 font-size: 1em; /* Adjust button font size */
+             }
+             .social-btn {
+                 width: 35px; /* Adjust social button size */
+                 height: 35px;
+                 font-size: 16px;
+             }
+             .divider::before,
+             .divider::after {
+                 width: 35%; /* Adjust divider line width */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heading-class" style="display: flex; justify-content:center;">
+            <div class="logo">UccBuy</div>
+        </div>
+    </header>
+
+    
+
+    <main>
+        <div class="form-container">
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('login')">Login</div>
+                <div class="tab" onclick="switchTab('signup')">Sign Up</div>
+            </div>
+
+            <div class="tab-content active" id="login-content">
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+
+                    <div class="divider">or</div>
+
+                    <div class="social-login">
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-content" id="signup-content">
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+
+                    <div class="divider">or</div>
+
+                     <div class="social-login">
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </div>
+
+                    <div class="terms">
+                        By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>UccBuy</h4>
+                <p>Your marketplace for buying and selling within the UCC community. Find anything from textbooks to fashion, electronics, and services.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                 <ul>
+                    <li><a href="#" data-category="food-drink">Food&Drink</a></li>
+                    <li><a href="#" data-category="education">Education</a></li>
+                    <li><a href="#" data-category="fashion-clothing">Fashion&Clothing</a></li>
+                    <li><a href="#" data-category="electronics">Electronics</a></li>
+                    <li><a href="#" data-category="services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 UccBuy. All rights reserved.
+        </div>
+    </footer>
+
+
+    <script src="js/uccbuy_script.js"></script>
+
+    <script>
+        // Keep the switchTab function here as it's specific to this page's tabs
+        window.switchTab = function(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            const selectedContent = document.getElementById(tabName + '-content');
+            if (selectedContent) {
+                 selectedContent.classList.add('active');
+            }
+
+
+            // Add active class to the clicked tab
+            // Find the tab element based on tabName
+            const selectedTab = document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`);
+             if (selectedTab) {
+                 selectedTab.classList.add('active');
+             }
+        }
+
+        // Check URL parameters on page load to determine which tab to open
+        // This part should run inside DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get('tab');
+
+            if (tabParam === 'signup') {
+                switchTab('signup');
+            } else {
+                // Default to login tab if no parameter or parameter is not 'signup'
+                switchTab('login');
+            }
+        });
+
+        // The rest of your uccbuy_script.js handles other pages and global functionality
+        // You should keep the main uccbuy_script.js file linked as well.
+        // The theme toggle listener from uccbuy_script.js will still work
+        // and toggle the 'light-mode' class on the body of this page.
+
+    </script>
+
+</body>
+</html>

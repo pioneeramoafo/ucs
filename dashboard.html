@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Uccbuy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/uccbuy_style.css">
+
+    <style>
+        /* --- Dashboard Styles --- */
+        .dashboard-body {
+            display: flex;
+            flex-direction: column; /* Stack header, dashboard container, and footer */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-grow: 1; /* Allow dashboard container to take up remaining vertical space */
+            max-width: 1200px; /* Match main content width */
+            margin: 20px auto; /* Center the container and add vertical margin */
+            padding: 0 20px; /* Add horizontal padding */
+            box-sizing: border-box; /* Include padding in width */
+            width: 100%; /* Ensure it takes full width within its container */
+        }
+
+        .dashboard-sidebar {
+            width: 200px; /* Fixed width for the sidebar */
+            background-color: rgb(36, 34, 55); /* Dark background */
+            border: 1px solid #444; /* Matching site border color */
+            border-radius: 8px; /* Rounded corners */
+            padding: 15px;
+            margin-right: 20px; /* Space between sidebar and main content */
+            flex-shrink: 0; /* Prevent sidebar from shrinking */
+            transition: background-color 0.5s ease, border-color 0.5s ease; /* Smooth transition */
+            display: flex; /* Use flexbox for internal layout */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* Style for the Back to Shop button */
+        .back-to-shop-btn {
+            background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+            color: white; /* Button text color */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            margin-bottom: 20px; /* Space below the button */
+            text-align: center; /* Center text */
+            display: block; /* Ensure it takes full width */
+            width: 100%; /* Ensure it takes full width */
+        }
+
+        .back-to-shop-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        .dashboard-sidebar h4 {
+            color: whitesmoke;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+            transition: color 0.5s ease, border-bottom-color 0.5s ease; /* Smooth transition */
+        }
+
+        .dashboard-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dashboard-sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .dashboard-sidebar ul li a {
+            color: darkgray;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .dashboard-sidebar ul li a:hover {
+            color: deepskyblue;
+            background-color: rgb(46, 44, 65);
+        }
+
+        .dashboard-sidebar ul li a.active {
+            color: deepskyblue;
+            font-weight: 700;
+            background-color: rgb(46, 44, 65);
+        }
+
+        .dashboard-main-content {
+            flex-grow: 1; /* Allow main content to take up remaining width */
+            background-color: rgb(36, 34, 55); /* Dark background */
+            border: 1px solid #444; /* Matching site border color */
+            border-radius: 8px; /* Rounded corners */
+            padding: 15px;
+            transition: background-color 0.5s ease, border-color 0.5s ease; /* Smooth transition */
+        }
+
+        .dashboard-main-content iframe {
+            width: 100%;
+            height: 100%; /* Make iframe fill the main content area */
+            border: none; /* Remove iframe border */
+        }
+
+
+        /* --- Responsive Styles for Dashboard (Tablet) --- */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                flex-direction: column; /* Stack sidebar and main content vertically */
+                padding: 0 10px; /* Adjust horizontal padding */
+            }
+
+            .dashboard-sidebar {
+                width: 100%; /* Sidebar takes full width */
+                margin-right: 0; /* Remove horizontal margin */
+                margin-bottom: 20px; /* Add space below sidebar */
+                flex-direction: row; /* Arrange items horizontally */
+                align-items: center; /* Vertically align items */
+                flex-wrap: wrap; /* Allow wrapping if needed */
+            }
+
+            .back-to-shop-btn {
+                width: auto; /* Auto width */
+                margin-right: 15px; /* Space after button */
+                margin-bottom: 0; /* Remove bottom margin */
+            }
+
+            .dashboard-sidebar h4 {
+                margin-bottom: 0; /* Remove bottom margin */
+                margin-right: 15px; /* Space after heading */
+                border-bottom: none; /* Remove border */
+                padding-bottom: 0; /* Remove padding */
+            }
+
+            .dashboard-sidebar ul {
+                display: flex; /* Arrange links horizontally */
+                overflow-x: auto; /* Enable horizontal scrolling */
+                white-space: nowrap; /* Prevent wrapping */
+                padding-bottom: 10px; /* Add padding for scrollbar */
+                scrollbar-width: none; /* Hide scrollbar for Firefox */
+                -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+                flex-grow: 1; /* Allow ul to take available space */
+                align-items: center; /* Vertically align links */
+            }
+
+            .dashboard-sidebar ul::-webkit-scrollbar {
+                display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+            }
+
+            .dashboard-sidebar ul li {
+                margin-bottom: 0; /* Remove bottom margin */
+                margin-right: 15px; /* Add space between links */
+                flex-shrink: 0; /* Prevent links from shrinking */
+            }
+
+            .dashboard-sidebar ul li:last-child {
+                margin-right: 0; /* No margin on the last link */
+            }
+
+            .dashboard-sidebar ul li a {
+                padding: 8px 12px; /* Adjust padding for horizontal layout */
+            }
+
+            .dashboard-main-content {
+                padding: 10px; /* Adjust padding */
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* --- Responsive Styles for Dashboard (Mobile) --- */
+            .dashboard-container {
+                flex-direction: column; /* Stack sidebar and main content vertically */
+                padding: 0 10px; /* Adjust horizontal padding */
+            }
+
+            .dashboard-sidebar {
+                width: 100%; /* Sidebar takes full width */
+                margin-right: 0; /* Remove horizontal margin */
+                margin-bottom: 15px; /* Add space below sidebar */
+                padding: 10px; /* Adjust padding */
+                /* Changed to row and wrap */
+                flex-direction: row; /* Arrange items horizontally */
+                flex-wrap: wrap; /* Allow items to wrap */
+                align-items: center; /* Vertically align items in the row */
+                flex-shrink: 0; /* Prevent sidebar from shrinking */
+            }
+
+            .back-to-shop-btn {
+                width: auto; /* Auto width */
+                margin-right: 10px; /* Space after button */
+                margin-bottom: 10px; /* Add space below button if it wraps */
+                font-size: 0.8em;
+                flex-shrink: 0; /* Prevent button from shrinking */
+            }
+
+            .dashboard-sidebar h4 {
+                margin-bottom: 10px; /* Add space below heading if it wraps */
+                margin-right: 10px; /* Space after heading */
+                width: auto; /* Auto width */
+                text-align: left; /* Align heading to the left */
+                border-bottom: none; /* Remove border */
+                padding-bottom: 0; /* Remove padding */
+                flex-shrink: 0; /* Prevent heading from shrinking */
+            }
+
+            .dashboard-sidebar ul {
+                display: flex; /* Ensure flex display for horizontal layout */
+                flex-direction: row; /* Arrange links horizontally */
+                overflow-x: auto; /* Enable horizontal scrolling */
+                white-space: nowrap; /* Prevent wrapping */
+                padding-bottom: 5px; /* Add padding for scrollbar */
+                flex-grow: 1; /* Allow ul to take available space in the row */
+                width: auto; /* Auto width to allow flex-grow to work */
+                justify-content: flex-start; /* Align links to the start */
+                flex-shrink: 1; /* Allow ul to shrink if needed, but flex-grow should dominate */
+                min-height: 0; /* Ensure it doesn't collapse */
+                align-items: center; /* Vertically align links */
+                /* Added margin-top to separate from button/heading if they wrap */
+                margin-top: 10px;
+            }
+
+            .dashboard-sidebar ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            .dashboard-sidebar ul li {
+                margin-right: 10px; /* Adjust space between links */
+                margin-bottom: 0; /* Ensure no bottom margin on list items */
+                flex-shrink: 0; /* Prevent list items from shrinking */
+            }
+
+            .dashboard-sidebar ul li:last-child {
+                margin-right: 0;
+            }
+
+            .dashboard-sidebar ul li a {
+                padding: 6px 10px; /* Adjust padding for horizontal layout */
+                font-size: 0.9em;
+            }
+
+            #dashboard-content{
+                /* Adjusted height for mobile iframe */
+                height: 60vh; /* Increased height slightly for better viewing */
+            }
+
+            .dashboard-main-content {
+                padding: 8px; /* Adjust padding */
+                flex-grow: 1; /* Ensure main content takes remaining space */
+            }
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    <header>
+        <div class="heading-class">
+            <div class="logo">UccBuy</div>
+            <div class="header-icons">
+                <i class="fas fa-search search-icon"></i>
+                <i class="fas fa-user account-icon"></i>
+                <button class="sell">Sell</button>
+                <i class="fas fa-shopping-bag sell-icon"></i>
+            </div>
+        </div>
+
+        <div class="account-dropdown">
+            <ul>
+                <li><a href="user.html?tab=login">Sign In</a></li>
+                <li><a href="user.html?tab=signup">Signup</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="search-bar-container">
+        <div class="search-bar-content">
+            <input type="text" class="search-input" placeholder="Search...">
+            <button class="search-button">Search</button> <i class="fas fa-times close-search"></i>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <button class="back-to-shop-btn">Back to Shop</button> <h4>Dashboard Menu</h4>
+            <ul>
+                <li><a href="dashboard_contents/dashboard_overview.html" class="dashboard-link" data-target="dashboard-content">Overview</a></li>
+                <li><a href="dashboard_contents/dashboard_mylisting.html" class="dashboard-link" data-target="dashboard-content">My Listings</a></li>
+                <li><a href="dashboard_contents/dashboard_post_ad.html" class="dashboard-link" data-target="dashboard-content">Post an Ad</a></li>
+                <li><a href="dashboard_contents/dashboard_edit_profile.html" class="dashboard-link" data-target="dashboard-content">Edit Profile</a></li>
+                <li><a href="dashboard_contents/dashboard_view_analysis.html" class="dashboard-link" data-target="dashboard-content">View Analysis</a></li>
+                <li><a href="dashboard_contents/dashboard_personal_store.html" class="dashboard-link" data-target="dashboard-content">Personal Store</a></li>
+                <li><a href="dashboard_contents/dashboard_upgrade.html" class="dashboard-link" data-target="dashboard-content">Upgrade to Premium</a></li>
+                <li><a href="dashboard_contents/dashboard_help.html" class="dashboard-link" data-target="dashboard-content">Help</a></li>
+                <li><a href="dashboard_contents/logout.html" class="dashboard-link" data-target="dashboard-content">Logout</a></li>
+            </ul>
+        </aside>
+        <main class="dashboard-main-content">
+            <iframe id="dashboard-content" src="dashboard_contents/dashboard_overview.html" frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>UccBuy</h4>
+                <p>Your marketplace for buying and selling within the UCC community. Find anything from textbooks to fashion, electronics, and services.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#" data-category="food-drink">Food&Drink</a></li>
+                    <li><a href="#" data-category="education">Education</a></li>
+                    <li><a href="#" data-category="fashion-clothing">Fashion&Clothing</a></li>
+                    <li><a href="#" data-category="electronics">Electronics</a></li>
+                    <li><a href="#" data-category="services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 UccBuy. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/uccbuy_script.js"></script>
+</body>
+</html>
