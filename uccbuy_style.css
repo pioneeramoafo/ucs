@@ -1,0 +1,3065 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Keep Poppins for general text */
+}
+
+/* Body background and text color (dark mode - default) */
+body {
+    background-color: rgb(46, 44, 65); /* Dark background */
+    color: whitesmoke; /* Default text color */
+    /* Removed transition for theme change */
+}
+
+/* Header styles (dark header - default) */
+header {
+    padding: 20px 0;
+    background-color: rgb(46, 44, 65); /* Dark background */
+    box-shadow: 0 4px 6px -6px deepskyblue; /* Matching site header shadow */
+    /* Removed transition for theme change */
+    position: relative; /* Needed for absolute positioning of dropdowns */
+    z-index: 1000; /* Ensure header is above other content */
+}
+
+/* Heading class for header content */
+.heading-class{
+    background-color: rgb(46, 44, 65);
+    height: 10vh; /* Adjusted height */
+    align-items: center;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between; /* Changed to space-between */
+    padding: 0 20px; /* Added padding */
+    /* Removed transition for theme change */
+}
+
+/* Logo styles */
+.logo {
+    font-family: 'Exo 2', sans-serif; /* Matching site logo font */
+    font-size: 2rem; /* Adjusted size */
+    font-weight: 800;
+    color: transparent; /* For gradient text */
+    background-image: linear-gradient(to right, purple, deepskyblue); /* Matching site logo gradient */
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* Header icons container */
+.header-icons {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically align items */
+}
+
+/* Header icon styles */
+.header-icons i{
+    color: whitesmoke;
+    font-size: 15pt;
+    margin-left: 20px; /* Use margin-left for spacing */
+    transition: all 0.6s;
+    cursor: pointer; /* Ensure icons have pointer cursor */
+}
+
+/* Header icon hover effect */
+.header-icons i:hover{
+    color: deepskyblue;
+}
+
+/* Sell button styles */
+.sell{
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue);
+    height: 6vh;
+    color: white;
+    width: 80px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    border: none;
+    font-size: 12pt;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 20px; /* Add some space between icons and button */
+    display: block; /* Show button by default */
+}
+
+/* Sell icon style (for mobile) */
+.sell-icon {
+    display: none; /* Hide icon by default */
+    color: whitesmoke;
+    font-size: 15pt;
+    margin-left: 20px;
+    transition: all 0.6s;
+    cursor: pointer;
+}
+
+/* Sell icon hover effect */
+.sell-icon:hover {
+     color: deepskyblue;
+}
+
+/* H2 heading style */
+h2{
+    margin-left: 25px;
+    margin-top: 20px; /* Adjusted margin-top */
+    color: whitesmoke; /* Default heading color */
+    transition: color 0.5s ease;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgb(36, 34, 55);
+    display: flex; /* Keep flex display */
+    align-items: center;
+    height: 5vh;
+    padding: 0 20px; /* Add padding */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Improve scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+     /* Removed transition for theme change */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.navbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Navbar link styles */
+.navbar a {
+    text-decoration: none;
+    color: darkgray;
+    margin-right: 20px; /* Use margin-right for spacing */
+    font-weight: 400;
+    font-family: 'Exo 2', sans-serif;
+    transition: all 0.5s;
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent links from shrinking */
+}
+
+/* No margin on the last navbar link */
+.navbar a:last-child {
+    margin-right: 0;
+}
+
+/* Navbar link hover effect */
+.navbar a:hover {
+    color: deepskyblue;
+}
+
+/* CSS for the selected navbar link */
+.navbar a.selected {
+    color: deepskyblue;
+    font-weight: 700;
+}
+
+/* Styles for the search bar container */
+.search-bar-container {
+    background-color: rgb(36, 34, 55); /* Slightly darker dark background */
+    padding: 0 0; /* Start with 0 padding */
+    overflow: hidden; /* Hide content when collapsed */
+    max-height: 0; /* Start collapsed */
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; /* Removed background transition */
+    border-bottom: 1px solid transparent; /* Start with transparent border */
+    z-index: 999; /* Ensure search bar is below header but above main content */
+    position: relative; /* Needed for z-index to work */
+}
+
+/* Active search bar container */
+.search-bar-container.active {
+    max-height: 60px; /* Adjust based on content height */
+    padding: 10px 0; /* Expand padding when active */
+    border-bottom-color: #444; /* Show border when active */
+}
+
+/* Styles for the search bar content (input, button, and icon) within the container */
+.search-bar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Search input field */
+.search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid deepskyblue;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Exo 2', sans-serif;
+    background-color: rgb(46, 44, 65);
+    color: whitesmoke;
+    margin-right: 10px;
+    transition: border-color 0.5s ease; /* Removed background/color transition */
+    outline: none;
+}
+
+/* Search input placeholder color */
+.search-input::placeholder {
+    color: #aaa;
+}
+
+/* Style for the new search button */
+.search-button {
+    padding: 10px 15px;
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: 'Exo 2', sans-serif;
+    margin-right: 10px;
+    transition: opacity 0.3s ease;
+}
+
+/* Search button hover effect */
+.search-button:hover {
+    opacity: 0.9;
+}
+
+/* Close search icon */
+.close-search {
+     color: whitesmoke !important;
+     font-size: 1.2em !important;
+     cursor: pointer;
+}
+
+/* Close search icon hover effect */
+.close-search:hover {
+    color: deepskyblue !important;
+}
+
+/* Account Dropdown Styles */
+.account-dropdown {
+    position: absolute;
+    top: 10vh;
+    right: 20px;
+    background-color: rgb(36, 34, 55);
+    border: 1px solid #444;
+    border-radius: 5px;
+    width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1001;
+    /* Removed transition for theme change */
+}
+
+/* Active account dropdown */
+.account-dropdown.active {
+    display: block;
+}
+
+/* Account dropdown list */
+.account-dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+/* Account dropdown list item */
+.account-dropdown ul li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Account dropdown list item hover effect */
+.account-dropdown ul li:hover {
+    background-color: rgb(46, 44, 65);
+}
+
+/* Account dropdown link */
+.account-dropdown ul li a {
+    color: whitesmoke;
+    text-decoration: none;
+    display: block;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.9em;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: rgb(36, 34, 55);
+    color: darkgray;
+    padding: 40px 20px;
+    font-family: 'Exo 2', sans-serif;
+    margin-top: 50px;
+    /* Removed transition for theme change */
+}
+
+/* Footer container */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Footer section */
+.footer-section {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* Footer section heading */
+.footer-section h4 {
+    color: whitesmoke;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+    /* Removed transition for theme change */
+}
+
+/* Footer section paragraph */
+.footer-section p {
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* Footer section list */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Footer section list item */
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer section link */
+.footer-section ul li a {
+    color: darkgray;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Footer section link hover effect */
+.footer-section ul li a:hover {
+    color: deepskyblue;
+}
+
+/* Social icons container */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Social icon link */
+.social-icons a {
+    color: darkgray;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+
+/* Social icon link hover effect */
+.social-icons a:hover {
+    color: deepskyblue;
+}
+
+/* Footer bottom section */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 0.9em;
+    color: #aaa;
+    /* Removed transition for theme change */
+}
+
+/* Responsive adjustments for footer */
+@media (min-width: 768px) {
+    .footer-section {
+        width: 30%;
+    }
+    .footer-container {
+        justify-content: space-around;
+    }
+    .sell {
+        display: block;
+    }
+    .sell-icon {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer-section {
+        width: 20%;
+    }
+}
+
+/* --- Mobile Responsiveness for Navbar --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: center;
+        height: 5vh;
+        padding: 0 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .navbar a {
+        text-decoration: none; /* Ensure no underline on mobile navbar links */
+        margin-right: 20px;
+        margin-bottom: 0;
+        width: auto;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+     .navbar-links {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        margin-top: 0;
+     }
+
+    .sell {
+        display: none;
+    }
+    .sell-icon {
+        display: block;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}
+
+/* Advert Container Styles (Carousel) */
+.advert-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    min-height: 170px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: rgb(36, 34, 55);
+    /* Removed transition for theme change */
+}
+
+.advert-slide {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    text-align: center;
+    color: darkgray;
+    font-size: 1.5em;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.advert-slide.active {
+    opacity: 1;
+    position: static;
+}
+
+/* Popular Ads Container (Grid) */
+.popular-ads-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Individual Ad Card Styles */
+.ad-card {
+    background-color: rgb(36, 34, 55);
+    border: 1px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Default to column layout */
+    transition: transform 0.3s ease; /* Removed theme transitions */
+    cursor: pointer;
+    position: relative;
+    height: 300px; /* Reduced fixed height for the ad cards */
+}
+
+.ad-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Remove underline from ad card links */
+.ad-card-link {
+    text-decoration: none;
+}
+
+
+.ad-card .image-placeholder {
+    width: 100%;
+    height: 180px; /* Fixed height for the placeholder container - kept same */
+    background-color: rgb(46, 44, 65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgray;
+    font-size: 1em;
+    border-bottom: 1px solid #444;
+    overflow: hidden; /* Hide overflowing image parts */
+    /* Removed theme transitions */
+}
+
+/* Style for images within the image-placeholder containers */
+.ad-card .image-placeholder img {
+    display: block; /* Remove extra space below the image */
+    width: 100%; /* Make the image fill the width of its container */
+    height: 100%; /* Make the image fill the height of its container */
+    object-fit: cover; /* This is the key: crops the image to fit the container while maintaining aspect ratio */
+}
+
+
+.ad-card .card-content {
+    padding: 8px; /* Reduced padding */
+    flex-grow: 1;
+    overflow: hidden; /* Hide overflowing text */
+}
+
+.ad-card .card-content .price-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ad-card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    color: deepskyblue;
+    /* Removed theme transition */
+    overflow: hidden; /* Hide overflowing title text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing title */
+    white-space: nowrap; /* Prevent title from wrapping */
+}
+
+.ad-card .card-content p {
+    margin: 0;
+    font-size: 0.9em;
+    color: darkgray;
+    /* Removed theme transition */
+    overflow: hidden; /* Hide overflowing paragraph text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    display: -webkit-box; /* For multi-line ellipsis */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+
+/* Premium Badge Styles */
+.premium-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: deepskyblue;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    /* Removed theme transition */
+}
+
+.premium-badge i {
+    margin-right: 4px;
+    font-size: 1em;
+}
+
+/* Store Button Styles */
+.store-button {
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Removed background transition */
+}
+
+.store-button:hover {
+    opacity: 0.9;
+}
+
+
+/* Toggle Button Styles - REMOVED */
+/*
+.theme-toggle {
+    position: absolute;
+    top: 130px;
+    left: 20px;
+    background-color: rgb(36, 34, 55);
+    color: whitesmoke;
+    border: 1px solid #444;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    z-index: 1002;
+    box-shadow: 0 0 8px deepskyblue;
+}
+
+.theme-toggle:hover {
+    opacity: 0.9;
+}
+
+.theme-toggle i {
+    margin-right: 5px;
+}
+
+.theme-toggle span {
+    display: inline-block;
+}
+*/
+
+
+/* Responsive adjustments for cards */
+@media (max-width: 768px) {
+     h2 {
+        font-size: 1.2em;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+     .ad-card .image-placeholder {
+        height: 200px; /* Adjust height for tablet */
+     }
+     .ad-card {
+        height: 330px; /* Adjusted fixed height for tablet */
+     }
+}
+
+ @media (max-width: 480px) {
+     .popular-ads-container {
+        display: grid; /* Keep grid */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Keep grid columns */
+        gap: 5px; /* Keep gap */
+        max-width: 1200px; /* Keep max-width */
+        margin: 5px 0; /* Adjusted margin to only apply vertically */
+        padding: 0 10px; /* Reduced horizontal padding */
+        box-sizing: border-box; /* Keep box-sizing */
+     }
+     .ad-card {
+        height: 250px; /* Further reduced fixed height for mobile */
+        width: 100%; /* Ensure cards take full width */
+        flex-direction: column; /* Keep column layout */
+        align-items: stretch; /* Keep alignment */
+        padding: 0; /* Keep padding */
+     }
+     .ad-card .image-placeholder {
+        width: 100%; /* Keep width */
+        height: 150px; /* Keep height */
+        flex-shrink: initial; /* Keep flex-shrink */
+        margin-right: 0; /* Keep margin */
+        border-bottom: 1px solid #444; /* Add back the bottom border for stacked layout */
+        border-radius: 8px 8px 0 0; /* Keep border radius */
+     }
+      .ad-card .image-placeholder img {
+        border-radius: 8px 8px 0 0; /* Keep border radius */
+      }
+     .ad-card .card-content {
+        flex-grow: 1; /* Allow content to grow */
+        padding: 8px; /* Reduced padding for mobile */
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Stack content vertically */
+        /* Removed justify-content: space-between; */
+     }
+     .ad-card .card-content .price-button-container {
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Stack price and button vertically */
+        justify-content: flex-start; /* Align items to the start */
+        align-items: flex-start; /* Align items to the start */
+        margin-top: 5px; /* Reduced margin-top */
+        width: 100%; /* Ensure container takes full width */
+     }
+     .ad-card h3 {
+        font-size: 0.9em; /* Keep font size */
+        margin-bottom: 4px; /* Further reduced margin-bottom */
+        /* Ensure title takes necessary space and doesn't overflow prematurely */
+        flex-shrink: 0; /* Prevent title from shrinking */
+        min-height: 1.2em; /* Ensure minimum height for one line of text */
+     }
+     .ad-card .card-content p {
+        font-size: 0.6em; /* Keep font size for description */
+        line-height: 1.4; /* Adjusted line height */
+        margin-bottom: 4px; /* Further reduced margin-bottom */
+        /* Allow description to take remaining space */
+        flex-grow: 1; /* Allow description to grow */
+     }
+     .ad-card .card-content p:last-of-type {
+        margin-top: 0; /* Removed auto margin */
+        margin-bottom: 4px; /* Adjusted margin */
+        font-size: 0.8em; /* Keep font size for price on mobile */
+     }
+      .store-button {
+        padding: 5px 10px; /* Keep padding */
+        font-size: 0.8em; /* Keep font size */
+        align-self: flex-start; /* Align button to the start */
+        width: 100%; /* Make button 100% width on mobile */
+      }
+
+     /* Adjust toggle button position on smaller screens - REMOVED */
+     /*
+     .theme-toggle {
+        top: 100px;
+        left: 10px;
+        font-size: 0.8em;
+        padding: 5px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        justify-content: center;
+     }
+     */
+
+     /* Hide the text in the toggle button on small screens - REMOVED */
+     /*
+     .theme-toggle span {
+        display: none;
+     }
+     */
+
+     /* Adjust icon margin for mobile view - REMOVED */
+     /*
+     .theme-toggle i {
+        margin-right: 0;
+     }
+     */
+}
+
+/* --- Styles unique to the Product Detail Page --- */
+.detail-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0 20px; /* Add horizontal padding */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.actual-detail{
+    display: flex;
+    flex-direction: row; /* Desktop: image and text side-by-side */
+    border: 1px solid #444; /* Matching site border color */
+    width: 100%;
+    max-width: 1200px; /* Match main content width */
+    background-color: rgb(36, 34, 55); /* Match card background */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure content stays within bounds */
+     /* Removed transition for theme change */
+}
+
+.product-image{
+    display: flex;
+    flex-direction: column; /* Desktop: main image above further images */
+    width: 500px; /* Set a fixed width for desktop */
+    height: 550px; /* Set a fixed height for desktop */
+    background-color: rgb(46, 44, 65); /* Darker background for image section */
+    padding: 15px; /* Add padding */
+    box-sizing: border-box; /* Include padding in dimensions */
+     /* Removed transition for theme change */
+     gap: 10px; /* Gap between main and further image sections */
+}
+
+.product-text{
+    padding: 15px; /* Adjusted padding */
+    flex: 1; /* Allow text section to grow */
+    display: flex; /* Use flexbox for text content */
+    flex-direction: column; /* Stack text content vertically */
+    justify-content: space-between; /* Distribute space */
+}
+
+.main-image{
+    background-color: rgb(77, 70, 36); /* Placeholder color */
+    flex-grow: 1; /* Allow main image to take most available vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke; /* Placeholder text color */
+    font-size: 1.2em;
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflowing content */
+    /* height and width are now controlled by the parent .product-image */
+    width: 100%; /* Ensure it fills the parent width */
+    height: 100%; /* Ensure it fills the parent height */
+}
+
+/* Specific styles for the further-image div */
+.further-image {
+     background-color: rgb(77, 70, 36); /* Placeholder color */
+     flex-shrink: 0; /* Prevent shrinking */
+     display: grid; /* Use grid for horizontal layout */
+     grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* Auto-fit columns, min width 0, grow to fill */
+     gap: 10px; /* Gap between thumbnails */
+     /* overflow-x: auto; Removed horizontal scrolling */
+     padding: 10px; /* Add padding */
+     border-radius: 8px; /* Rounded corners */
+     width: 100%; /* Ensure it fills the parent width */
+     height: 100px; /* Fixed height for the thumbnail row on desktop */
+     align-items: center; /* Vertically align thumbnails */
+}
+
+/* Style for individual thumbnail images within further-image */
+.further-image img {
+    display: block;
+    /* width: 80px; Removed fixed width */
+    /* height: 80px; Removed fixed height */
+    object-fit: cover; /* Crop thumbnails to fit */
+    border-radius: 5px; /* Slightly rounded corners for thumbnails */
+    cursor: pointer; /* Indicate clickable */
+    transition: transform 0.2s ease; /* Subtle hover effect */
+    /* flex-shrink: 0; Removed flex-shrink as grid handles this */
+    width: 100%; /* Make image fill grid cell width */
+    height: 100%; /* Make image fill grid cell height */
+}
+
+.further-image img:hover {
+    transform: scale(1.05);
+}
+
+
+.product-text h1{
+    font-size: 2.5em; /* Adjusted font size */
+    margin-bottom: 15px; /* Adjusted margin */
+    color: deepskyblue; /* Title color */
+    background: none; /* Remove gradient from h1 in detail page */
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    color: deepskyblue; /* Ensure color is set */
+     /* Removed transition for theme change */
+}
+
+.product-text p {
+    font-size: 1.1em; /* Adjusted paragraph font size */
+    line-height: 1.6; /* Improved readability */
+    margin-bottom: 15px; /* Space below paragraphs */
+    color: darkgray; /* Paragraph text color */
+     /* Removed transition for theme change */
+}
+
+.product-text p:last-of-type {
+    margin-top: auto; /* Push the last paragraph (price) to the bottom */
+    margin-bottom: 15px; /* Add space above the button */
+     color: whitesmoke; /* Make price stand out */
+     font-size: 1.2em; /* Larger price font */
+}
+
+/* Specific style for the contact seller button */
+.contact-Seller {
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site button gradient */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px; /* Adjusted padding */
+    font-size: 1em; /* Adjusted font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    align-self: flex-start; /* Align button to the start */
+}
+
+.contact-Seller:hover {
+    opacity: 0.9;
+}
+
+
+/* --- Removed Light Mode Styles for Product Detail Page --- */
+
+
+/* --- Dashboard Styles --- */
+.dashboard-body {
+    display: flex;
+    flex-direction: column; /* Stack header, dashboard container, and footer */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+}
+
+.dashboard-container {
+    display: flex;
+    flex-grow: 1; /* Allow dashboard container to take up remaining vertical space */
+    max-width: 1200px; /* Match main content width */
+    margin: 20px auto; /* Center the container and add vertical margin */
+    padding: 0 20px; /* Add horizontal padding */
+    box-sizing: border-box; /* Include padding in width */
+    width: 100%; /* Ensure it takes full width within its container */
+}
+
+.dashboard-sidebar {
+    width: 200px; /* Fixed width for the sidebar */
+    background-color: rgb(36, 34, 55); /* Dark background */
+    border: 1px solid #444; /* Matching site border color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+    margin-right: 20px; /* Space between sidebar and main content */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+     /* Removed transition for theme change */
+}
+
+/* Style for the Back to Shop button */
+.back-to-shop-btn {
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-bottom: 20px; /* Space below the button */
+    text-align: center; /* Center text */
+    display: block; /* Ensure it takes full width */
+    width: 100%; /* Ensure it takes full width */
+}
+
+.back-to-shop-btn:hover {
+    opacity: 0.9;
+}
+
+
+.dashboard-sidebar h4 {
+    color: whitesmoke;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+     /* Removed transition for theme change */
+}
+
+.dashboard-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.dashboard-sidebar ul li a {
+    color: darkgray;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.dashboard-sidebar ul li a:hover {
+    color: deepskyblue;
+    background-color: rgb(46, 44, 65);
+}
+
+.dashboard-sidebar ul li a.active {
+    color: deepskyblue;
+    font-weight: 700;
+    background-color: rgb(46, 44, 65);
+}
+
+.dashboard-main-content {
+    flex-grow: 1; /* Allow main content to take up remaining width */
+    background-color: rgb(36, 34, 55); /* Dark background */
+    border: 1px solid #444; /* Matching site border color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+     /* Removed transition for theme change */
+}
+
+.dashboard-main-content iframe {
+    width: 100%;
+    height: 100%; /* Make iframe fill the main content area */
+    border: none; /* Remove iframe border */
+}
+
+/* --- Removed Light Mode Styles for Dashboard --- */
+
+
+/* --- Responsive Styles for Product Detail Page --- */
+@media (max-width: 768px) {
+    .actual-detail {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+    }
+
+    .product-image {
+        flex-direction: column; /* Tablet: stack main image above further images */
+        width: 100%; /* Take full width */
+        height: auto; /* Height determined by content */
+        padding: 10px; /* Adjust padding */
+        gap: 10px; /* Gap between main and further image sections */
+    }
+
+    .main-image {
+        flex-grow: 1; /* Allow main image to grow vertically */
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 0; /* Remove bottom margin */
+        min-height: 250px; /* Minimum height for tablet */
+        width: 100%; /* Ensure full width */
+        height: auto; /* Height determined by content */
+    }
+
+    .further-image {
+        flex-direction: row; /* Keep thumbnails horizontal */
+        width: 100%; /* Ensure full width */
+        height: 80px; /* Fixed height for thumbnail row on tablet */
+        padding: 8px; /* Adjust padding */
+        align-items: center; /* Vertically align thumbnails */
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* Auto-fit columns, min width 0, grow to fill */
+        gap: 8px; /* Adjust gap for tablet */
+    }
+
+    .further-image img {
+        /* width: 70px; Removed fixed width */
+        /* height: 70px; Removed fixed height */
+        object-fit: cover; /* Crop thumbnails to fit */
+        border-radius: 5px; /* Slightly rounded corners for thumbnails */
+        cursor: pointer; /* Indicate clickable */
+        transition: transform 0.2s ease; /* Subtle hover effect */
+        /* flex-shrink: 0; Removed flex-shrink as grid handles this */
+        width: 100%; /* Make image fill grid cell width */
+        height: 100%; /* Make image fill grid cell height */
+    }
+
+    .further-image img:hover {
+        transform: scale(1.05);
+    }
+
+    .product-text {
+        flex: none; /* Remove flex grow */
+        width: 100%; /* Take full width */
+        padding: 15px; /* Keep padding */
+    }
+
+    .product-text h1 {
+        font-size: 2em; /* Adjust title font size */
+    }
+
+    .product-text p {
+        font-size: 1em; /* Adjust paragraph font size */
+    }
+
+    .product-text p:last-of-type {
+        margin-top: 15px; /* Add space above price */
+        margin-bottom: 15px; /* Add space above button */
+    }
+
+    .contact-Seller {
+        align-self: center; /* Center button on smaller screens */
+    }
+
+     .detail-container {
+        padding: 0 10px; /* Adjust horizontal padding on smaller screens */
+     }
+
+     /* --- Responsive Styles for Dashboard (Tablet) --- */
+    .dashboard-container {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+        padding: 0 10px; /* Adjust horizontal padding */
+    }
+
+    .dashboard-sidebar {
+        width: 100%; /* Sidebar takes full width */
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 20px; /* Add space below sidebar */
+        flex-direction: row; /* Arrange items horizontally */
+         align-items: center; /* Vertically align items */
+         flex-wrap: wrap; /* Allow wrapping if needed */
+    }
+
+     .back-to-shop-btn {
+        width: auto; /* Auto width */
+        margin-right: 15px; /* Space after button */
+        margin-bottom: 0; /* Remove bottom margin */
+     }
+
+    .dashboard-sidebar h4 {
+         margin-bottom: 0; /* Remove bottom margin */
+         margin-right: 15px; /* Space after heading */
+         border-bottom: none; /* Remove border */
+         padding-bottom: 0; /* Remove padding */
+    }
+
+    .dashboard-sidebar ul {
+        display: flex; /* Arrange links horizontally */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping */
+        padding-bottom: 10px; /* Add padding for scrollbar */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+         flex-grow: 1; /* Allow ul to take available space */
+         align-items: center; /* Vertically align links */
+    }
+
+    .dashboard-sidebar ul::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+    }
+
+    .dashboard-sidebar ul li {
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 15px; /* Add space between links */
+        flex-shrink: 0; /* Prevent links from shrinking */
+    }
+
+    .dashboard-sidebar ul li:last-child {
+        margin-right: 0; /* No margin on the last link */
+    }
+
+    .dashboard-sidebar ul li a {
+        padding: 8px 12px; /* Adjust padding for horizontal layout */
+    }
+
+    .dashboard-main-content {
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 480px) {
+     .popular-ads-container {
+        display: grid; /* Keep grid */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Keep grid columns */
+        gap: 5px; /* Keep gap */
+        max-width: 1200px; /* Keep max-width */
+        margin: 5px 0; /* Adjusted margin to only apply vertically */
+        padding: 0 10px; /* Reduced horizontal padding */
+        box-sizing: border-box; /* Keep box-sizing */
+     }
+     .ad-card {
+        height: 250px; /* Further reduced fixed height for mobile */
+        width: 100%; /* Ensure cards take full width */
+        flex-direction: column; /* Keep column layout */
+        align-items: stretch; /* Keep alignment */
+        padding: 0; /* Keep padding */
+     }
+     .ad-card .image-placeholder {
+        width: 100%; /* Keep width */
+        height: 150px; /* Keep height */
+        flex-shrink: initial; /* Keep flex-shrink */
+        margin-right: 0; /* Keep margin */
+        border-bottom: 1px solid #444; /* Add back the bottom border for stacked layout */
+        border-radius: 8px 8px 0 0; /* Keep border radius */
+     }
+      .ad-card .image-placeholder img {
+        border-radius: 8px 8px 0 0; /* Keep border radius */
+      }
+     .ad-card .card-content {
+        flex-grow: 1; /* Allow content to grow */
+        padding: 8px; /* Reduced padding for mobile */
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Stack content vertically */
+        /* Removed justify-content: space-between; */
+     }
+     
+     .ad-card .card-content .price-button-container {
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Stack price and button vertically */
+        justify-content: flex-start; /* Align items to the start */
+        align-items: flex-start; /* Align items to the start */
+        margin-top: 5px; /* Reduced margin-top */
+        width: 100%; /* Ensure container takes full width */
+     }
+     .ad-card h3 {
+        font-size: 0.9em; /* Keep font size */
+        margin-bottom: 4px; /* Further reduced margin-bottom */
+        /* Ensure title takes necessary space and doesn't overflow prematurely */
+        flex-shrink: 0; /* Prevent title from shrinking */
+        min-height: 1.2em; /* Ensure minimum height for one line of text */
+     }
+     .ad-card .card-content p {
+        font-size: 0.6em; /* Keep font size for description */
+        line-height: 1.4; /* Adjusted line height */
+        margin-bottom: 4px; /* Further reduced margin-bottom */
+        /* Allow description to take remaining space */
+        flex-grow: 1; /* Allow description to grow */
+     }
+     .ad-card .card-content p:last-of-type {
+        margin-top: 0; /* Removed auto margin */
+        margin-bottom: 4px; /* Adjusted margin */
+        font-size: 0.8em; /* Keep font size for price on mobile */
+     }
+      .store-button {
+        padding: 5px 10px; /* Keep padding */
+        font-size: 0.8em; /* Keep font size */
+        align-self: flex-start; /* Align button to the start */
+        width: 100%; /* Make button 100% width on mobile */
+      }
+/* --- Styles unique to the User Form Page --- */
+main .form-container {
+    width: 100%;
+    max-width: 400px;
+    background: rgb(36, 34, 55); /* Slightly lighter dark background */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Darker shadow for contrast */
+    overflow: hidden;
+    /* Removed theme transition */
+}
+
+main .tabs {
+    display: flex;
+}
+
+main .tab {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    background: rgb(46, 44, 65); /* Darker background for inactive tab */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: darkgray; /* Inactive tab text color */
+}
+
+main .tab.active {
+    background: rgb(36, 34, 55); /* Matches form container background */
+    color: whitesmoke; /* Active tab text color */
+    border-bottom: 3px solid deepskyblue; /* Matching site accent color */
+}
+
+main .tab-content {
+    display: none;
+    padding: 25px;
+}
+
+main .tab-content.active {
+    display: block;
+}
+
+main .form-group {
+    margin-bottom: 20px;
+}
+
+main .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: whitesmoke; /* Label text color */
+    /* Removed theme transition */
+}
+
+main .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #444; /* Matching site border color */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgb(46, 44, 65); /* Input background color */
+    color: whitesmoke; /* Input text color */
+    transition: border 0.3s ease; /* Removed theme transitions */
+    outline: none;
+}
+
+main .form-group input:focus {
+    border-color: deepskyblue; /* Matching site accent color */
+    outline: none;
+}
+
+main .form-group input::placeholder {
+    color: #aaa; /* Lighter placeholder text */
+}
+
+main .btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Use opacity for hover effect */
+}
+
+main .btn:hover {
+    opacity: 0.9; /* Slight transparency on hover */
+}
+
+main .forgot-password {
+    text-align: right;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+main .forgot-password a {
+    color: deepskyblue; /* Matching site accent color */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+main .divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: darkgray; /* Divider text color */
+}
+
+main .divider::before,
+main .divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%; /* Adjusted width */
+    height: 1px;
+    background: #444; /* Matching site border color */
+}
+
+main .divider::before {
+    left: 0;
+}
+
+main .divider::after {
+    right: 0;
+}
+
+main .social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+main .social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Social icon color */
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+main .social-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Specific social button colors (keeping standard colors) */
+main .social-btn.facebook {
+    background-color: #3b5998;
+}
+
+main .social-btn.google {
+    background-color: #db4437;
+}
+
+main .social-btn.twitter {
+    background-color: #1da1f2;
+}
+
+main .terms {
+    font-size: 12px;
+    color: darkgray; /* Terms text color */
+    text-align: center;
+    margin-top: 20px;
+}
+
+main .terms a {
+    color: deepskyblue; /* Matching site accent color */
+    text-decoration: none;
+}
+
+/* --- Dashboard Content Styles (for iframes) --- */
+.dashboard-content-body {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    color: whitesmoke; /* Default text color */
+    /* Removed transition */
+}
+
+.dashboard-content-body h2 {
+    color: whitesmoke; /* Heading color */
+    transition: color 0.5s ease;
+}
+
+/* Overview Content Styles */
+.overview-section {
+    background-color: rgb(46, 44, 65); /* Darker background for content sections */
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    /* Removed transition */
+}
+
+.overview-section h3 {
+    color: deepskyblue;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+     /* Removed transition */
+}
+
+.overview-section p {
+    color: darkgray;
+    line-height: 1.6;
+     /* Removed transition */
+}
+
+.overview-section ul {
+    list-style: disc; /* Example: Add list style */
+    margin-left: 20px; /* Example: Add margin */
+    color: darkgray; /* Example: List item color */
+}
+.overview-section ul li {
+    margin-bottom: 5px; /* Example: Space between list items */
+}
+
+
+/* My Listings Content Styles */
+.my-listings-container {
+    display: flex; /* Use flexbox for a row-based layout */
+    flex-direction: column; /* Stack the listing cards vertically */
+    gap: 20px; /* Space between listing cards */
+    padding: 15px; /* Padding around the container */
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    /* Removed transition */
+}
+
+.listing-card {
+    background-color: rgb(46, 44, 65); /* Darker background for individual cards */
+    border: 1px solid #555; /* Slightly lighter border */
+    border-radius: 8px;
+    overflow: hidden; /* Ensure content stays within bounds */
+    display: flex; /* Use flexbox for the row layout */
+    flex-direction: row; /* Arrange image and content in a row */
+    align-items: center; /* Vertically align items in the row */
+    transition: transform 0.3s ease; /* Removed theme transitions */
+    min-height: 150px; /* Ensure a minimum height for the row */
+}
+
+.listing-image-placeholder {
+    width: 150px; /* Fixed width for the image on the left */
+    height: 150px; /* Fixed height for the image */
+    background-color: rgb(56, 54, 75); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgray;
+    font-size: 1em;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+     /* Removed transition */
+}
+
+ .listing-image-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area without distortion */
+ }
+
+
+.listing-content {
+    padding: 10px; /* Padding inside the card content */
+    flex-grow: 1; /* Allow content area to take up remaining space */
+    display: flex;
+    flex-direction: row; /* Arrange title/description and buttons in a row */
+    align-items: center; /* Vertically align items in the row */
+    justify-content: space-between; /* Distribute space between content and buttons */
+}
+
+.listing-text {
+    display: flex;
+    flex-direction: column; /* Stack title and description vertically */
+     flex-grow: 1; /* Allow text area to grow */
+     margin-right: 15px; /* Add space between text and buttons */
+     overflow: hidden; /* Hide overflowing text */
+}
+
+
+.listing-content h3 {
+    margin-top: 0;
+    margin-bottom: 5px; /* Reduced space below the title */
+    font-size: 1.1em;
+    color: deepskyblue; /* Title color */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+     /* Removed transition */
+}
+
+ .listing-content p {
+    margin: 0;
+    font-size: 0.9em;
+    color: darkgray; /* Description text color */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit description to 2 lines */
+    -webkit-box-orient: vertical;
+     /* Removed transition */
+ }
+
+
+.listing-actions {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.action-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.edit-button {
+    background-color: #ffc107; /* Yellow color for edit */
+    color: #333;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red color for delete */
+    color: white;
+}
+
+.action-button:hover {
+    opacity: 0.9;
+}
+
+
+/* Post an Ad Content Styles */
+.post-ad-container {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    padding: 20px;
+    max-width: 700px; /* Limit form width for better readability */
+    margin: 0 auto; /* Center the form */
+    /* Removed transition */
+}
+
+.post-ad-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke; /* Heading color */
+    text-align: center;
+     /* Removed transition */
+}
+
+.post-ad-container .form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.post-ad-container .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: whitesmoke; /* Label text color */
+     /* Removed transition */
+}
+
+.post-ad-container .form-group input[type="text"],
+.post-ad-container .form-group input[type="number"],
+.post-ad-container .form-group textarea,
+.post-ad-container .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444; /* Matching site border color */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: rgb(46, 44, 65); /* Input background color */
+    color: whitesmoke; /* Input text color */
+    transition: border 0.3s ease; /* Removed theme transitions */
+    outline: none;
+    font-family: 'Poppins', sans-serif; /* Use Poppins for form inputs */
+}
+
+ .post-ad-container .form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Minimum height for textarea */
+ }
+
+.post-ad-container .form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: rgb(46, 44, 65);
+    color: whitesmoke;
+    cursor: pointer;
+     /* Removed theme transitions */
+}
+
+ /* Style for file input button */
+ .post-ad-container .form-group input[type="file"]::file-selector-button {
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+ }
+
+ .post-ad-container .form-group input[type="file"]::file-selector-button:hover {
+    opacity: 0.9;
+ }
+
+
+.post-ad-container .form-group input:focus,
+.post-ad-container .form-group textarea:focus,
+.post-ad-container .form-group select:focus {
+    border-color: deepskyblue; /* Matching site accent color */
+    outline: none;
+}
+
+.post-ad-container .form-group input::placeholder,
+.post-ad-container .form-group textarea::placeholder {
+    color: #aaa; /* Lighter placeholder text */
+}
+
+.post-ad-container .radio-group {
+    margin-bottom: 15px;
+}
+
+.post-ad-container .radio-group label {
+    margin-right: 15px; /* Space between radio options */
+    color: whitesmoke;
+     /* Removed transition */
+}
+
+.post-ad-container .radio-group input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+.post-ad-button {
+    display: block; /* Make the button a block element */
+    width: 100%; /* Make the button full width */
+    padding: 12px;
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Use opacity for hover effect */
+    margin-top: 20px; /* Space above the button */
+}
+
+.post-ad-button:hover {
+    opacity: 0.9;
+}
+
+
+/* Edit Profile Content Styles */
+.edit-profile-container {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    padding: 20px;
+    max-width: 700px; /* Limit form width for better readability */
+    margin: 0 auto; /* Center the form */
+    /* Removed transition */
+}
+
+.edit-profile-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke; /* Heading color */
+    text-align: center;
+     /* Removed transition */
+}
+
+.edit-profile-container .form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.edit-profile-container .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: whitesmoke; /* Label text color */
+     /* Removed transition */
+}
+
+.edit-profile-container .form-group input[type="text"],
+.edit-profile-container .form-group input[type="email"],
+.edit-profile-container .form-group input[type="tel"],
+.edit-profile-container .form-group textarea,
+.edit-profile-container .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444; /* Matching site border color */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: rgb(46, 44, 65); /* Input background color */
+    color: whitesmoke; /* Input text color */
+    transition: border 0.3s ease; /* Removed theme transitions */
+    outline: none;
+    font-family: 'Poppins', sans-serif; /* Use Poppins for form inputs */
+}
+
+ .edit-profile-container .form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Minimum height for textarea */
+ }
+
+.edit-profile-container .form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: rgb(46, 44, 65);
+    color: whitesmoke;
+    cursor: pointer;
+     /* Removed theme transitions */
+}
+
+ /* Style for file input button */
+ .edit-profile-container .form-group input[type="file"]::file-selector-button {
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+ }
+
+ .edit-profile-container .form-group input[type="file"]::file-selector-button:hover {
+    opacity: 0.9;
+ }
+
+
+.edit-profile-container .form-group input:focus,
+.edit-profile-container .form-group textarea:focus,
+.edit-profile-container .form-group select:focus {
+    border-color: deepskyblue; /* Matching site accent color */
+    outline: none;
+}
+
+.edit-profile-container .form-group input::placeholder,
+.edit-profile-container .form-group textarea::placeholder {
+    color: #aaa; /* Lighter placeholder text */
+}
+
+/* Style for profile picture preview */
+.edit-profile-container .profile-picture-preview {
+    display: block;
+    width: 100px; /* Fixed size for preview */
+    height: 100px;
+    border-radius: 50%; /* Circular shape */
+    object-fit: cover; /* Cover the area */
+    margin-top: 10px;
+    border: 2px solid deepskyblue; /* Accent border */
+     /* Removed transition */
+}
+
+
+.update-profile-button {
+    display: block; /* Make the button a block element */
+    width: 100%; /* Make the button full width */
+    padding: 12px;
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Use opacity for hover effect */
+    margin-top: 20px; /* Space above the button */
+}
+
+.update-profile-button:hover {
+    opacity: 0.9;
+}
+
+
+/* View Analysis Content Styles */
+.analysis-container {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    padding: 20px;
+    /* Removed transition */
+}
+
+.analysis-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke; /* Heading color */
+    text-align: center;
+    /* Removed transition */
+}
+
+.analysis-section {
+    background-color: rgb(46, 44, 65); /* Darker background for sections */
+    border: 1px solid #555; /* Slightly lighter border */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    /* Removed transition */
+}
+
+.analysis-section h3 {
+    color: deepskyblue; /* Section heading color */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    /* Removed transition */
+}
+
+/* Styles for the chart container */
+.chart-container {
+    width: 100%;
+    height: 400px; /* Set a height for the chart */
+    border-radius: 8px;
+    margin-bottom: 20px; /* Add space below the chart */
+    overflow: hidden; /* Hide overflowing chart elements */
+}
+
+/* Styles for the SVG element created by D3 */
+.chart-container svg {
+    display: block; /* Remove extra space below the SVG */
+    width: 100%; /* Make SVG responsive */
+    height: 100%; /* Make SVG responsive */
+}
+
+/* Styles for the bars in the bar chart */
+.bar {
+    fill: deepskyblue; /* Color of the bars */
+    transition: fill 0.3s ease;
+}
+
+.bar:hover {
+    fill: purple; /* Hover color */
+}
+
+/* Styles for the axes text */
+.axis text {
+    font-size: 0.9em;
+    fill: darkgray; /* Axis text color */
+     /* Removed transition */
+}
+
+ /* Styles for the axis lines */
+.axis path,
+.axis line {
+    stroke: #555; /* Axis line color */
+    shape-rendering: crispEdges; /* Sharper lines */
+     /* Removed transition */
+}
+
+/* Styles for the table */
+.analysis-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove space between table borders */
+    margin-top: 10px;
+}
+
+.analysis-table th,
+.analysis-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #555; /* Separator line */
+    color: darkgray; /* Text color */
+     /* Removed transition */
+}
+
+.analysis-table th {
+    color: whitesmoke; /* Header text color */
+    font-weight: 600;
+    background-color: rgb(56, 54, 75); /* Slightly darker header background */
+     /* Removed transition */
+}
+
+.analysis-table tbody tr:last-child td {
+    border-bottom: none; /* No border on the last row */
+}
+
+ /* Style for product name in table */
+ .analysis-table td:first-child {
+    color: deepskyblue; /* Highlight product name */
+     /* Removed transition */
+ }
+
+
+/* Personal Store Content Styles */
+.personal-store-container {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    padding: 20px;
+    /* Removed transition */
+}
+
+.personal-store-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke; /* Heading color */
+    text-align: center;
+    /* Removed transition */
+}
+
+/* --- Personal Store Banner Styles --- */
+.store-banner {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Fixed height for the banner */
+    background-image: url('https://placehold.co/1200x300/purple/white?text=Store+Banner'); /* Placeholder banner image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    margin-bottom: 20px; /* Adjusted space below the banner */
+    overflow: hidden; /* Hide overflowing background */
+    display: flex; /* Use flexbox to align content within the banner */
+    align-items: flex-end; /* Align items to the bottom */
+    padding: 20px; /* Add padding inside the banner */
+    box-sizing: border-box; /* Include padding in banner size */
+}
+
+.store-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for text readability */
+    z-index: 0; /* Ensure overlay is behind content */
+}
+
+.store-profile-picture {
+    width: 80px; /* Size of the profile picture */
+    height: 80px;
+    border-radius: 50%; /* Circular shape */
+    border: 4px solid rgb(36, 34, 55); /* Border matching container background */
+    object-fit: cover; /* Cover the area */
+    z-index: 1; /* Ensure it's above the banner overlay */
+    margin-right: 15px; /* Space between profile picture and info */
+    /* Removed transition */
+}
+
+
+.store-info {
+    z-index: 1; /* Ensure it's above the banner overlay */
+    color: whitesmoke; /* Default text color */
+    flex-grow: 1; /* Allow info to take up available space */
+     /* Removed transition */
+}
+
+.store-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.5em;
+    color: deepskyblue; /* Name color */
+     /* Removed transition */
+}
+
+.store-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: darkgray; /* Bio text color */
+    max-width: 90%; /* Limit bio width */
+     /* Removed transition */
+}
+
+/* Style for the Share Store Link button */
+.share-store-button {
+    z-index: 1; /* Ensure it's above the banner overlay */
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-left: auto; /* Push the button to the far right */
+}
+
+.share-store-button:hover {
+    opacity: 0.9;
+}
+
+
+.store-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between product cards */
+    padding: 15px; /* Padding around the grid */
+    border-radius: 8px;
+    margin-top: 20px; /* Space above the grid */
+}
+
+/* Styles for individual product cards (similar to index page but adapted) */
+.store-product-card {
+    background-color: rgb(46, 44, 65); /* Darker background for cards */
+    border: 1px solid #555; /* Slightly lighter border */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Removed theme transitions */
+    cursor: pointer;
+    height: 300px; /* Fixed height for consistency */
+}
+
+.store-product-card:hover {
+    transform: translateY(-5px);
+}
+
+.store-image-placeholder {
+    width: 100%;
+    height: 180px; /* Fixed height for image area */
+    background-color: rgb(56, 54, 75); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgray;
+    font-size: 1em;
+    border-bottom: 1px solid #555;
+    overflow: hidden;
+     /* Removed transition */
+}
+
+ .store-image-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area without distortion */
+ }
+
+
+.store-card-content {
+    padding: 10px; /* Padding inside the card content */
+    flex-grow: 1; /* Allow content area to grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out title, description (if added), and price */
+}
+
+.store-card-content h3 {
+    margin-top: 0;
+    margin-bottom: 5px; /* Space below title */
+    font-size: 1.1em;
+    color: deepskyblue; /* Title color */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+     /* Removed transition */
+}
+
+ .store-card-content p {
+    margin: 0;
+    font-size: 1em; /* Price font size */
+    color: whitesmoke; /* Price color */
+    font-weight: 600;
+     /* Removed transition */
+ }
+
+
+/* Upgrade to Premium Content Styles */
+.upgrade-container {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    padding: 20px;
+    max-width: 900px; /* Increased max-width for comparison layout */
+    margin: 0 auto; /* Center the form */
+    /* Removed transition */
+}
+
+.upgrade-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke; /* Heading color */
+    text-align: center;
+    /* Removed transition */
+}
+
+.plans-comparison {
+    display: flex; /* Use flexbox for side-by-side layout */
+    gap: 20px; /* Space between plan containers */
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center items when wrapped */
+}
+
+.plan-card {
+    background-color: rgb(46, 44, 65); /* Darker background for plan cards */
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1; /* Allow cards to grow and shrink */
+    min-width: 280px; /* Minimum width for cards */
+    display: flex;
+    flex-direction: column;
+    /* Removed transition */
+}
+
+.plan-card h3 {
+    color: deepskyblue; /* Plan title color */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+     /* Removed transition */
+}
+
+.plan-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plan-features ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    color: darkgray; /* Feature text color */
+    border-bottom: 1px dashed #555; /* Dashed separator */
+     /* Removed transition */
+}
+
+ .plan-features ul li:last-child {
+    border-bottom: none; /* No border on the last feature */
+ }
+
+
+.plan-features ul li i {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.plan-features .fa-check-circle {
+    color: #28a745; /* Green for available features */
+}
+
+ .plan-features .fa-times-circle {
+    color: #dc3545; /* Red for unavailable features */
+ }
+
+
+.plan-price {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: whitesmoke; /* Price color */
+     /* Removed transition */
+}
+
+.plan-price span {
+    font-size: 0.6em;
+    font-weight: 400;
+    color: darkgray; /* Per month text color */
+     /* Removed transition */
+}
+
+
+.upgrade-button {
+    display: block; /* Make button block for full width */
+    width: 100%; /* Full width button */
+    padding: 12px;
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none; /* Remove underline from link */
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Use opacity for hover effect */
+    margin-top: auto; /* Push button to the bottom of the flex container */
+    text-align: center; /* Center button text */
+}
+
+.upgrade-button:hover {
+    opacity: 0.9;
+}
+
+
+/* Help Content Styles */
+.help-container {
+    background-color: rgb(36, 34, 55); /* Match dashboard main content background */
+    border: 1px solid #444; /* Match dashboard main content border */
+    border-radius: 8px; /* Match dashboard main content border radius */
+    padding: 20px;
+    max-width: 800px; /* Limit container width */
+    margin: 0 auto; /* Center the container */
+    /* Removed transition */
+}
+
+.help-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: whitesmoke; /* Heading color */
+    text-align: center;
+    /* Removed transition */
+}
+
+.help-section {
+    background-color: rgb(46, 44, 65); /* Darker background for sections */
+    border: 1px solid #555; /* Slightly lighter border */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    /* Removed transition */
+}
+
+.help-section h3 {
+    color: deepskyblue; /* Section heading color */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    /* Removed transition */
+}
+
+.help-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.help-section ul li {
+    margin-bottom: 10px;
+}
+
+.help-section ul li a {
+    color: darkgray; /* Link text color */
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.help-section ul li a:hover {
+    color: deepskyblue; /* Link hover color */
+}
+
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-info p {
+    color: darkgray; /* Contact text color */
+    margin-bottom: 10px;
+     /* Removed transition */
+}
+
+.contact-info a {
+    color: deepskyblue; /* Contact link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* --- Premium Store Page Specific Styles --- */
+.premium-store-container .store-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444; /* Separator line below tabs */
+    /* Removed transition */
+}
+
+.premium-store-container .store-tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: 600;
+    color: darkgray; /* Inactive tab text color */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 2px solid transparent; /* Transparent border for inactive */
+}
+
+.premium-store-container .store-tab:hover {
+    color: whitesmoke; /* Hover color */
+}
+
+.premium-store-container .store-tab.active {
+    color: deepskyblue; /* Active tab text color */
+    border-bottom-color: deepskyblue; /* Accent color for active tab */
+}
+
+.premium-store-container .tab-content {
+    display: none; /* Hide all tab content by default */
+    padding: 15px 0; /* Padding for content area */
+}
+
+.premium-store-container .tab-content.active {
+    display: block; /* Show active tab content */
+}
+
+/* --- Product Grid Styles (Moved/Adapted) --- */
+.premium-store-container .store-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0;
+    border-radius: 8px;
+}
+
+/* Style for the link wrapping the product card */
+.premium-store-container .store-product-card-link {
+     text-decoration: none; /* Remove underline from the link */
+     color: inherit; /* Inherit text color */
+}
+
+.premium-store-container .store-product-card {
+    background-color: rgb(46, 44, 65);
+    border: 1px solid #555;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Removed theme transitions */
+    cursor: pointer;
+    height: 300px; /* Fixed height for consistency */
+}
+
+.premium-store-container .store-product-card:hover {
+    transform: translateY(-5px);
+}
+
+.premium-store-container .store-image-placeholder {
+    width: 100%;
+    height: 180px; /* Fixed height for image area */
+    background-color: rgb(56, 54, 75); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgray;
+    font-size: 1em;
+    border-bottom: 1px solid #555;
+    overflow: hidden;
+     /* Removed transition */
+}
+
+ .premium-store-container .store-image-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area without distortion */
+ }
+
+.premium-store-container .store-card-content {
+    padding: 10px; /* Padding inside the card content */
+    flex-grow: 1; /* Allow content area to grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out title, description (if added), and price */
+}
+
+.premium-store-container .store-card-content h3 {
+    margin-top: 0;
+    margin-bottom: 5px; /* Space below title */
+    font-size: 1.1em;
+    color: deepskyblue;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+     /* Removed transition */
+}
+
+ .premium-store-container .store-card-content p {
+    margin: 0;
+    font-size: 1em;
+    color: whitesmoke;
+    font-weight: 600;
+     /* Removed transition */
+ }
+
+/* --- Detail Tab Content Styles --- */
+.premium-store-container .detail-tab-content-layout {
+    display: flex; /* Use flexbox for side-by-side layout */
+    gap: 30px; /* Space between image and text */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    background-color: rgb(46, 44, 65); /* Darker background for this section */
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 20px;
+     /* Removed transition */
+     align-items: flex-start; /* Align items to the top */
+     margin-bottom: 30px; /* Space below the main detail section */
+}
+
+.premium-store-container .detail-image-area {
+    flex-shrink: 0; /* Prevent image area from shrinking */
+    width: 300px; /* Fixed width for the image area on larger screens */
+    height: 350px; /* Fixed height */
+    background-color: rgb(56, 54, 75); /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgray;
+    font-size: 1.2em;
+    border-radius: 8px;
+    overflow: hidden; /* Hide overflowing parts of the image */
+     /* Removed transition */
+}
+
+.premium-store-container .detail-image-area img {
+    display: block;
+    width: 100%; /* Make the image fill the width of its container */
+    height: 100%; /* Make the image fill the height of its container */
+    object-fit: cover; /* This is key: crops the image to fit the container while maintaining aspect ratio */
+}
+
+
+.premium-store-container .detail-text-area {
+    flex-grow: 1; /* Allow text area to take up remaining space */
+    color: darkgray; /* Default text color */
+    line-height: 1.6;
+     /* Removed transition */
+     display: flex; /* Use flexbox for internal layout */
+     flex-direction: column; /* Stack elements vertically */
+}
+
+.premium-store-container .detail-text-area h3 {
+    color: whitesmoke; /* Product name color */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+     /* Removed transition */
+}
+
+.premium-store-container .detail-text-area p {
+    margin-bottom: 10px; /* Space between paragraphs */
+}
+
+.premium-store-container .detail-text-area strong {
+    color: deepskyblue; /* Highlight labels */
+     /* Removed transition */
+}
+
+/* Style for the Contact Seller button */
+.premium-store-container .contact-seller-btn {
+    margin-top: 20px; /* Space above the button */
+    padding: 12px 20px;
+    background: linear-gradient(to right, rgb(173, 106, 173), deepskyblue); /* Matching site gradient */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    align-self: flex-start; /* Align button to the start (left) */
+}
+
+.premium-store-container .contact-seller-btn:hover {
+    opacity: 0.9; /* Slight transparency on hover */
+}
+
+
+/* --- Other Products Grid Styles (New) --- */
+.premium-store-container .other-products-section h3 {
+    color: whitesmoke; /* Heading color */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+     /* Removed transition */
+}
+
+.premium-store-container .other-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Slightly smaller cards for 'other products' */
+    gap: 15px; /* Smaller gap */
+    padding: 0;
+    border-radius: 8px;
+}
+
+/* Reuse store-product-card and its children styles for consistency */
+/* .other-products-grid .store-product-card { ... } */
+/* .other-products-grid .store-image-placeholder { ... } */
+/* .other-products-grid .store-card-content { ... } */
+/* .other-products-grid .store-card-content h3 { ... } */
+/* .other-products-grid .store-card-content p { ... } */
+
+
+/* --- Review Tab Content Styles --- */
+.premium-store-container .review-content {
+    color: darkgray;
+    line-height: 1.6;
+     /* Removed transition */
+}
+
+.premium-store-container .review-content h3 {
+    color: whitesmoke;
+    margin-top: 0;
+    margin-bottom: 10px;
+     /* Removed transition */
+}
+
+
+/* Removed all .light-mode specific styles */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+     h2 {
+        font-size: 1.2em;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+     .ad-card .image-placeholder {
+        height: 200px; /* Adjust height for tablet */
+     }
+     .ad-card {
+        height: 330px; /* Adjusted fixed height for tablet */
+     }
+
+     /* Responsive adjustments for listings */
+     .listing-card {
+        flex-direction: row; /* Keep row layout */
+        align-items: center;
+     }
+     .listing-image-placeholder {
+        width: 120px; /* Slightly smaller image on tablet */
+        height: 120px;
+     }
+     .listing-content {
+        padding: 10px;
+     }
+     .listing-text {
+        margin-right: 10px; /* Adjust space */
+     }
+     .listing-actions {
+        flex-direction: row; /* Keep buttons in a row */
+        gap: 8px;
+     }
+
+     /* Responsive adjustments for Product Detail Page */
+    .actual-detail {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+    }
+
+    .product-image {
+        flex-direction: column; /* Tablet: stack main image above further images */
+        width: 100%; /* Take full width */
+        height: auto; /* Height determined by content */
+        padding: 10px; /* Adjust padding */
+        gap: 10px; /* Gap between main and further image sections */
+    }
+
+    .main-image {
+        flex-grow: 1; /* Allow main image to grow vertically */
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 0; /* Remove bottom margin */
+        min-height: 250px; /* Minimum height for tablet */
+        width: 100%; /* Ensure full width */
+        height: auto; /* Height determined by content */
+    }
+
+    .further-image {
+        flex-direction: row; /* Keep thumbnails horizontal */
+        width: 100%; /* Ensure full width */
+        height: 80px; /* Fixed height for thumbnail row on tablet */
+        padding: 8px; /* Adjust padding */
+        align-items: center; /* Vertically align thumbnails */
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* Auto-fit columns, min width 0, grow to fill */
+        gap: 8px; /* Adjust gap for tablet */
+    }
+
+    .further-image img {
+        object-fit: cover; /* Crop thumbnails to fit */
+        border-radius: 5px; /* Slightly rounded corners for thumbnails */
+        cursor: pointer; /* Indicate clickable */
+        transition: transform 0.2s ease; /* Subtle hover effect */
+        width: 100%; /* Make image fill grid cell width */
+        height: 100%; /* Make image fill grid cell height */
+    }
+
+    .further-image img:hover {
+        transform: scale(1.05);
+    }
+
+    .product-text {
+        flex: none; /* Remove flex grow */
+        width: 100%; /* Take full width */
+        padding: 15px; /* Keep padding */
+    }
+
+    .product-text h1 {
+        font-size: 2em; /* Adjust title font size */
+    }
+
+    .product-text p {
+        font-size: 1em; /* Adjust paragraph font size */
+    }
+
+    .product-text p:last-of-type {
+        margin-top: 15px; /* Add space above price */
+        margin-bottom: 15px; /* Add space above button */
+    }
+
+    .contact-Seller {
+        align-self: center; /* Center button on smaller screens */
+    }
+
+     .detail-container {
+        padding: 0 10px; /* Adjust horizontal padding on smaller screens */
+     }
+
+     /* --- Responsive Styles for Dashboard (Tablet) --- */
+    .dashboard-container {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+        padding: 0 10px; /* Adjust horizontal padding */
+    }
+
+    .dashboard-sidebar {
+        width: 100%; /* Sidebar takes full width */
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 20px; /* Add space below sidebar */
+        flex-direction: row; /* Arrange items horizontally */
+         align-items: center; /* Vertically align items */
+         flex-wrap: wrap; /* Allow wrapping if needed */
+    }
+
+     .back-to-shop-btn {
+        width: auto; /* Auto width */
+        margin-right: 15px; /* Space after button */
+        margin-bottom: 0; /* Remove bottom margin */
+     }
+
+    .dashboard-sidebar h4 {
+         margin-bottom: 0; /* Remove bottom margin */
+         margin-right: 15px; /* Space after heading */
+         border-bottom: none; /* Remove border */
+         padding-bottom: 0; /* Remove padding */
+    }
+
+    .dashboard-sidebar ul {
+        display: flex; /* Arrange links horizontally */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping */
+        padding-bottom: 10px; /* Add padding for scrollbar */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+         flex-grow: 1; /* Allow ul to take available space */
+         align-items: center; /* Vertically align links */
+    }
+
+    .dashboard-sidebar ul::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+    }
+
+    .dashboard-sidebar ul li {
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 15px; /* Add space between links */
+        flex-shrink: 0; /* Prevent links from shrinking */
+    }
+
+    .dashboard-sidebar ul li:last-child {
+        margin-right: 0; /* No margin on the last link */
+    }
+
+    .dashboard-sidebar ul li a {
+        padding: 8px 12px; /* Adjust padding for horizontal layout */
+    }
+
+    .dashboard-main-content {
+        padding: 10px; /* Adjust padding */
+    }
+
+     /* Responsive adjustments for analysis */
+    .analysis-container {
+        padding: 15px;
+    }
+    .analysis-section {
+        padding: 10px;
+    }
+    .analysis-section h3 {
+        font-size: 1.1em;
+    }
+    .chart-container {
+        height: 300px; /* Adjust height for smaller screens */
+        margin-bottom: 15px; /* Adjust space below chart */
+    }
+     .axis text {
+        font-size: 0.8em; /* Smaller axis text on mobile */
+     }
+     /* Responsive adjustments for help */
+    .help-container {
+        padding: 15px;
+    }
+    .help-section {
+        padding: 10px;
+    }
+    .help-section h3 {
+        font-size: 1.2em;
+    }
+    .help-section ul li a {
+        font-size: 0.9em;
+        padding: 6px 0;
+    }
+    .contact-info p,
+    .contact-info a {
+        font-size: 0.9em;
+    }
+    /* Responsive adjustments for Premium Store */
+    .premium-store-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    .store-banner {
+        height: 200px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .store-profile-picture {
+        width: 80px;
+        height: 80px;
+        border-width: 3px;
+         margin-right: 15px;
+    }
+    .store-info h3 {
+        font-size: 1.5em;
+     }
+     .store-info p {
+        font-size: 0.9em;
+     }
+     .store-tabs {
+        margin-bottom: 15px;
+     }
+     .store-tab {
+        padding: 8px 12px;
+        font-size: 0.95em;
+     }
+     .tab-content {
+        padding: 10px 0;
+     }
+     /* Detail tab layout adjustment */
+     .detail-tab-content-layout {
+        flex-direction: column; /* Stack image and text vertically */
+        gap: 20px;
+        padding: 15px;
+        margin-bottom: 20px; /* Adjust space below */
+     }
+     .detail-image-area {
+        width: 100%; /* Image takes full width */
+        height: 250px; /* Adjust height */
+     }
+     .detail-text-area {
+        font-size: 0.95em;
+     }
+     .detail-text-area h3 {
+        font-size: 1.6em;
+     }
+     .store-products-grid {
+        gap: 15px;
+        padding: 0;
+     }
+     .store-product-card {
+        height: 280px;
+     }
+     .store-image-placeholder {
+        height: 160px;
+     }
+     .store-card-content {
+        padding: 8px;
+     }
+     .store-card-content h3 {
+        font-size: 1em;
+     }
+     .store-card-content p {
+        font-size: 0.9em;
+     }
+     /* Other products grid adjustment */
+     .other-products-section h3 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+     }
+     .other-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Adjust min width */
+        gap: 10px; /* Adjust gap */
+     }
+}
+
+@media (max-width: 480px) {
+     .popular-ads-container {
+        display: grid; /* Keep grid */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Keep grid columns */
+        gap: 5px; /* Keep gap */
+        max-width: 1200px; /* Keep max-width */
+        margin: 5px 0; /* Adjusted margin to only apply vertically */
+        padding: 0 10px; /* Reduced horizontal padding */
+        box-sizing: border-box; /* Keep box-sizing */
+     }
+     .ad-card {
+        height: 250px; /* Further reduced fixed height for mobile */
+        width: 100%; /* Ensure cards take full width */
+        flex-direction: column; /* Keep column layout */
+        align-items: stretch; /* Keep alignment */
+        padding: 0; /* Keep padding */
+     }
+     .ad-card .image-placeholder {
+        width: 100%; /* Keep width */
+        height: 150px; /* Keep height */
+        flex-shrink: initial; /* Keep flex-shrink */
+        margin-right: 0; /* Keep margin */
+        border-bottom: 1px solid #444; /* Add back the bottom border for stacked layout */
+        border-radius: 8px 8px 0 0; /* Keep border radius */
+     }
+      .ad-card .image-placeholder img {
+        border-radius: 8px 8px 0 0; /* Keep border radius */
+      }
+      #dashboard-content{
+        height: 50vh;
+      }
+     .ad-card .card-content {
+        flex-grow: 1; /* Allow content to grow */
+        padding: 8px; /* Reduced padding for mobile */
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Stack content vertically */
+        /* Removed justify-content: space-between; */
+     }
+     .ad-card .card-content .price-button-container {
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Stack price and button vertically */
+        justify-content: flex-start; /* Align items to the start */
+        align-items: flex-start; /* Align items to the start */
+        margin-top: 5px; /* Reduced margin-top */
+        width: 100%; /* Ensure container takes full width */
+     }
+     .ad-card h3 {
+        font-size: 0.9em; /* Keep font size */
+        margin-bottom: 4px; /* Further reduced margin-bottom */
+        /* Ensure title takes necessary space and doesn't overflow prematurely */
+        flex-shrink: 0; /* Prevent title from shrinking */
+        min-height: 1.2em; /* Ensure minimum height for one line of text */
+     }
+     .ad-card .card-content p {
+        font-size: 0.6em; /* Keep font size for description */
+        line-height: 1.4; /* Adjusted line height */
+        margin-bottom: 4px; /* Further reduced margin-bottom */
+        /* Allow description to take remaining space */
+        flex-grow: 1; /* Allow description to grow */
+     }
+     .ad-card .card-content p:last-of-type {
+        margin-top: 0; /* Removed auto margin */
+        margin-bottom: 4px; /* Adjusted margin */
+        font-size: 0.8em; /* Keep font size for price on mobile */
+     }
+      .store-button {
+        padding: 5px 10px; /* Keep padding */
+        font-size: 0.8em; /* Keep font size */
+        align-self: flex-start; /* Align button to the start */
+        width: 100%; /* Make button 100% width on mobile */
+      }
+
+     /* Responsive adjustments for listings */
+    .my-listings-container {
+        grid-template-columns: 1fr; /* Stack listings on very small screens */
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .listing-card {
+        flex-direction: column; /* Stack image and content vertically on mobile */
+        align-items: stretch; /* Stretch items to fill the width */
+    }
+
+    .listing-image-placeholder {
+        width: 100%; /* Image takes full width */
+        height: 150px; /* Adjust image height for mobile */
+        border-bottom: 1px solid #444; /* Add back the bottom border for stacked layout */
+    }
+
+    .listing-content {
+        padding: 8px;
+        flex-direction: column; /* Stack text and buttons vertically */
+        align-items: flex-start; /* Align items to the start */
+         justify-content: flex-start; /* Align content to the start */
+    }
+
+    .listing-text {
+        width: 100%; /* Text area takes full width */
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 10px; /* Add space below text before buttons */
+    }
+
+     .listing-content h3 {
+        font-size: 1em; /* Keep font size */
+        margin-bottom: 5px; /* Keep small space below title */
+     }
+
+    .listing-actions {
+        flex-direction: row; /* Keep buttons in a row on mobile */
+        gap: 8px;
+        margin-top: 0; /* Remove extra space */
+         justify-content: flex-start; /* Align buttons to the start */
+         width: 100%; /* Buttons container takes full width */
+    }
+
+    .action-button {
+        width: auto; /* Allow buttons to size based on content */
+        text-align: center; /* Center text in buttons */
+         flex-grow: 1; /* Allow buttons to grow and fill space */
+    }
+
+     /* Responsive adjustments for analysis */
+    /* Stack table columns on very small screens */
+     .analysis-table, .analysis-table tbody, .analysis-table tr, .analysis-table td {
+        display: block;
+        width: 100%;
+     }
+     .analysis-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #555;
+        border-radius: 8px;
+     }
+     .analysis-table td {
+        text-align: right;
+        border-bottom: 1px dotted #666;
+     }
+     .analysis-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+        color: whitesmoke;
+        margin-right: 10px;
+         /* Removed transition */
+     }
+     .analysis-table td:last-child {
+        border-bottom: none;
+     }
+     .analysis-table th {
+        display: none; /* Hide table headers on mobile */
+     }
+     /* Responsive adjustments for Premium Store */
+    .premium-store-container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+     .store-banner {
+        height: 150px;
+        padding: 10px;
+        margin-bottom: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .store-profile-picture {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+         margin-right: 0;
+         margin-bottom: 8px;
+    }
+     .store-info {
+        flex-direction: column;
+         width: 100%;
+     }
+     .store-info h3 {
+        font-size: 1.3em;
+        margin-bottom: 4px;
+     }
+     .store-info p {
+        font-size: 0.8em;
+        max-width: 100%;
+     }
+     .share-store-button {
+        padding: 5px 10px;
+        font-size: 0.7em;
+        margin-left: 0;
+        margin-top: 8px;
+        align-self: flex-start;
+     }
+     .store-tabs {
+        margin-bottom: 10px;
+     }
+     .store-tab {
+        padding: 6px 10px;
+        font-size: 0.9em;
+     }
+     .tab-content {
+        padding: 8px 0;
+     }
+     /* Detail tab layout adjustment */
+     .detail-tab-content-layout {
+        flex-direction: column; /* Stack image and text vertically */
+        gap: 15px;
+        padding: 10px;
+        margin-bottom: 15px; /* Adjust space below */
+     }
+      .detail-image-area {
+        width: 100%; /* Image takes full width */
+        height: 200px; /* Adjust height */
+     }
+     .detail-text-area {
+        font-size: 0.9em;
+     }
+     .detail-text-area h3 {
+        font-size: 1.4em;
+     }
+    .store-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+        padding: 0;
+    }
+    .store-product-card {
+        height: 250px;
+    }
+     .store-image-placeholder {
+        height: 150px;
+     }
+     .store-card-content {
+        padding: 8px;
+     }
+     .store-card-content h3 {
+        font-size: 1em;
+        margin-bottom: 4px;
+     }
+     .store-card-content p {
+        font-size: 0.9em;
+     }
+     /* Other products grid adjustment */
+     .other-products-section h3 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+     }
+     .other-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Adjust min width */
+        gap: 8px; /* Adjust gap */
+     }
+}
